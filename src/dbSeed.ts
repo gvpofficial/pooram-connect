@@ -1,0 +1,294 @@
+export const initialDbData = {
+  "users": [
+    {
+      "id": "u-admin",
+      "name": "Kerala Devaswom Commissioner",
+      "email": "admin@devaswom.gov.in",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "admin",
+      "phone": "04712300000",
+      "district": "Trivandrum",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.023Z"
+    },
+    {
+      "id": "u-comm-thrissur",
+      "name": "Thrissur Pooram Central Committee",
+      "email": "committee.thrissur@pooramconnect.org",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "committee",
+      "phone": "9876543210",
+      "district": "Thrissur",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    },
+    {
+      "id": "u-comm-nemmara",
+      "name": "Nemmara-Vellangi Committee",
+      "email": "committee.nemmara@pooramconnect.org",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "committee",
+      "phone": "9876543211",
+      "district": "Palakkad",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    },
+    {
+      "id": "u-owner-ramachandran",
+      "name": "Thechikottukavu Devaswom Trust",
+      "email": "owner.ramachandran@pooramconnect.org",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "elephant_owner",
+      "phone": "9876543212",
+      "district": "Thrissur",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    },
+    {
+      "id": "u-owner-karnan",
+      "name": "Mangalamkunnu Elephant Syndicate",
+      "email": "owner.karnan@pooramconnect.org",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "elephant_owner",
+      "phone": "9876543213",
+      "district": "Palakkad",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    },
+    {
+      "id": "u-acc-owner-1",
+      "name": "Kerala Traditional Crafts & Rentals",
+      "email": "crafts.rentals@pooramconnect.org",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "accessory_owner",
+      "phone": "9876543214",
+      "district": "Thrissur",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    },
+    {
+      "id": "u-acc-owner-2",
+      "name": "Malabar Temple Decorators",
+      "email": "malabar.decor@pooramconnect.org",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "accessory_owner",
+      "phone": "9876543215",
+      "district": "Palakkad",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    }
+  ],
+  "temples": [
+    {
+      "id": "t-vadakkunnathan",
+      "committeeId": "u-comm-thrissur",
+      "name": "Vadakkunnathan Temple",
+      "location": "Swaraj Round, Thrissur",
+      "district": "Thrissur",
+      "history": "The historic Shiva temple that serves as the main venue for the world-famous Thrissur Pooram. Founded by Sage Parasurama according to legend.",
+      "imageUrl": "/images/temple_vadakkunnathan.jpg",
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    },
+    {
+      "id": "t-nemmara",
+      "committeeId": "u-comm-nemmara",
+      "name": "Nellikulangara Bhagavathy Temple",
+      "location": "Nemmara, Palakkad",
+      "district": "Palakkad",
+      "history": "The holy shrine dedicated to Goddess Bhagavathy, hosting the annual Nemmara-Vellangi Vela, one of Kerala's most vibrant visual spectacles.",
+      "imageUrl": "/images/temple_nemmara.jpg",
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    }
+  ],
+  "festivals": [
+    {
+      "id": "f-thrissur-pooram-2026",
+      "templeId": "t-vadakkunnathan",
+      "name": "Thrissur Pooram 2026",
+      "startDate": "2026-04-26",
+      "endDate": "2026-04-28",
+      "description": "The mother of all Poorams, featuring the majestic Kudamattom (umbrella exchange) and the historic Ilanjithara Melam with over 200 artists.",
+      "imageUrl": "/images/festival_thrissur.jpg",
+      "schedule": {
+        "Day 1": "Flag Hoisting & Kodiyettam (Procession from constituent temples)",
+        "Day 2": "Sample Vedikettu (Fireworks) & Kudamattom (Umbrella exchange at Southern Gate)",
+        "Day 3": "Pakal Pooram (Day pooram) & Farewell Ceremony (Upacharam Cholli Piriyal)"
+      },
+      "status": "upcoming" as const,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    },
+    {
+      "id": "f-nemmara-vela-2026",
+      "templeId": "t-nemmara",
+      "name": "Nemmara-Vellangi Vela 2026",
+      "startDate": "2026-04-03",
+      "endDate": "2026-04-05",
+      "description": "Known for its giant decorated canopies (Aana Pandhal) and competing fireworks displays between the Nemmara and Vellangi wings.",
+      "imageUrl": "/images/festival_nemmara.jpg",
+      "schedule": {
+        "Day 1": "Temple rituals, Kodiyettam, and Vellangi Vela procession",
+        "Day 2": "Grand fireworks, traditional Chenda Melam, and illumination of Pandhals"
+      },
+      "status": "upcoming" as const,
+      "createdAt": "2026-07-02T10:16:42.024Z"
+    }
+  ],
+  "elephants": [
+    {
+      "id": "e-ramachandran",
+      "ownerId": "u-owner-ramachandran",
+      "name": "Thechikottukavu Ramachandran",
+      "imageUrl": "/images/elephant_ramachandran.jpg",
+      "history": "The tallest living captive elephant in Asia, widely celebrated for his majestic presence and the unique privilege of opening the doors of Thrissur Pooram.",
+      "age": 61,
+      "height": 317,
+      "weight": 5800,
+      "registrationNumber": "KERALA-DEV-E101",
+      "mahoutName": "Mani Nair",
+      "mahoutPhone": "9446012345",
+      "fitnessCertificateUrl": "/docs/certificates/ramachandran_fit.pdf",
+      "fitnessValidity": "2027-03-31",
+      "medicalRecords": "Excellent health status, regularly checked by Devaswom veterinary board.",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    },
+    {
+      "id": "e-karnan",
+      "ownerId": "u-owner-karnan",
+      "name": "Mangalamkunnu Karnan",
+      "imageUrl": "/images/elephant_karnan.jpg",
+      "history": "Renowned for his high head posture (Thala Pokkam) and calm temperament, making him a favorite for hoisting festival flags and leading processions.",
+      "age": 53,
+      "height": 308,
+      "weight": 5100,
+      "registrationNumber": "KERALA-DEV-E102",
+      "mahoutName": "Sasi G.",
+      "mahoutPhone": "9446054321",
+      "fitnessCertificateUrl": "/docs/certificates/karnan_fit.pdf",
+      "fitnessValidity": "2027-01-15",
+      "medicalRecords": "Fit for transport, no chronic medical issues reported.",
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    }
+  ],
+  "accessories": [
+    {
+      "id": "a-nettipattam-gold",
+      "ownerId": "u-acc-owner-1",
+      "name": "Premium Gold-Plated Nettipattam (1.5m)",
+      "category": "Nettipattam",
+      "imageUrl": "/images/accessory_nettipattam.jpg",
+      "description": "Exquisite elephant forehead ornaments made of high-quality copper alloy double gold-plated, traditional round medallions reflecting sunlight beautifully.",
+      "quantityTotal": 15,
+      "rentalPrice": 3500,
+      "specifications": {
+        "Height": "150cm",
+        "Material": "Copper & Gold-Plating",
+        "Style": "Central Travancore Tradition"
+      },
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    },
+    {
+      "id": "a-muthukuda-velvet",
+      "ownerId": "u-acc-owner-1",
+      "name": "Designer Silk Muthukuda (Assorted Colors)",
+      "category": "Muthukuda",
+      "imageUrl": "/images/accessory_muthukuda.jpg",
+      "description": "Vibrant traditional decorative umbrellas used during Kudamattom, available in deep maroon, bright yellow, royal blue, and gold-trimmed borders.",
+      "quantityTotal": 50,
+      "rentalPrice": 450,
+      "specifications": {
+        "Diameter": "90cm",
+        "Fabric": "Silk Velvet",
+        "Fringe": "Golden Zari"
+      },
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    },
+    {
+      "id": "a-chenda-brass",
+      "ownerId": "u-acc-owner-2",
+      "name": "Asuravadyam Chenda Instrument Set",
+      "category": "Chenda Melam instruments",
+      "imageUrl": "/images/accessory_chenda.jpg",
+      "description": "Handcrafted traditional drums made of jackfruit wood and tightly stretched calfskin, tuned for both Uruttu Chenda and Veeku Chenda performances.",
+      "quantityTotal": 20,
+      "rentalPrice": 800,
+      "specifications": {
+        "Wood": "Varikka Plavu (Jackfruit)",
+        "Skin": "Natural Cowhide",
+        "Strap": "Coir & Hemp Cord"
+      },
+      "isVerified": true,
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    }
+  ],
+  "elephantBookings": [
+    {
+      "id": "eb-1",
+      "festivalId": "f-thrissur-pooram-2026",
+      "elephantId": "e-ramachandran",
+      "startDate": "2026-04-26",
+      "endDate": "2026-04-27",
+      "status": "confirmed" as const,
+      "notes": "Confirmed for opening the southern entrance doorway (Thekke Gopura Vaatil).",
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    },
+    {
+      "id": "eb-2",
+      "festivalId": "f-thrissur-pooram-2026",
+      "elephantId": "e-karnan",
+      "startDate": "2026-04-27",
+      "endDate": "2026-04-28",
+      "status": "confirmed" as const,
+      "notes": "Booked for leading the Thiruvambady section of the procession.",
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    },
+    {
+      "id": "eb-3",
+      "festivalId": "f-nemmara-vela-2026",
+      "elephantId": "e-ramachandran",
+      "startDate": "2026-04-03",
+      "endDate": "2026-04-05",
+      "status": "pending" as const,
+      "notes": "Awaiting offline review of transportation and crowd safety measures.",
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    }
+  ],
+  "accessoryBookings": [
+    {
+      "id": "ab-1",
+      "festivalId": "f-thrissur-pooram-2026",
+      "accessoryId": "a-nettipattam-gold",
+      "startDate": "2026-04-26",
+      "endDate": "2026-04-28",
+      "quantity": 15,
+      "status": "confirmed" as const,
+      "notes": "All 15 units reserved for the main elephant row during Kudamattom.",
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    },
+    {
+      "id": "ab-2",
+      "festivalId": "f-thrissur-pooram-2026",
+      "accessoryId": "a-muthukuda-velvet",
+      "startDate": "2026-04-27",
+      "endDate": "2026-04-27",
+      "quantity": 30,
+      "status": "confirmed" as const,
+      "notes": "Set of 30 multi-colored Muthukudas for the competitive umbrella exchange.",
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    },
+    {
+      "id": "ab-3",
+      "festivalId": "f-nemmara-vela-2026",
+      "accessoryId": "a-chenda-brass",
+      "startDate": "2026-04-03",
+      "endDate": "2026-04-05",
+      "quantity": 10,
+      "status": "accepted" as const,
+      "notes": "Accepted for renting 10 drums; down payment pending offline verification.",
+      "createdAt": "2026-07-02T10:16:42.025Z"
+    }
+  ]
+};

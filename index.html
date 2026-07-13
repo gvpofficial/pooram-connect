@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kerala Pooram Management Portal</title>
+    <meta name="description" content="A centralized digital ecosystem for managing Kerala temple festivals, elephant bookings, and traditional Pooram accessory rentals." />
+    <link rel="icon" type="image/png" href="favicon.png?v=3" />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('pooram_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+
+        const isViteDev = window.location.port === '5173';
+        const script = document.createElement('script');
+        script.type = 'module';
+
+        if (isViteDev) {
+          script.src = 'src/main.ts';
+        } else {
+          // Serve built assets under Live Server or file:// protocol using relative paths
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'dist/assets/index.css';
+          document.head.appendChild(link);
+
+          script.src = 'dist/assets/index.js';
+        }
+        document.head.appendChild(script);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

@@ -26,7 +26,7 @@ export function renderCalendarWidget(
   const getFirstDayOfMonth = (y: number, m: number) => new Date(y, m, 1).getDay();
 
   function getDayAvailability(dateStr: string) {
-    if (!dateStr) return { status: 'empty', label: '', details: null };
+    if (!dateStr) return { status: 'empty', label: '', shortLabel: '', details: null };
 
     const overlapping = bookings.filter(b => {
       return dateStr >= b.startDate && dateStr <= b.endDate && b.status !== 'rejected' && b.status !== 'cancelled';
@@ -36,6 +36,7 @@ export function renderCalendarWidget(
       return {
         status: 'available',
         label: totalQuantity > 1 ? `Available: ${totalQuantity}/${totalQuantity}` : 'Available',
+        shortLabel: totalQuantity > 1 ? `${totalQuantity}/${totalQuantity}` : 'Avail',
         details: null
       };
     }
@@ -48,6 +49,7 @@ export function renderCalendarWidget(
         return {
           status: 'booked',
           label: 'Booked',
+          shortLabel: 'Booked',
           details: `${b.festival?.name || 'Festival'} at ${b.festival?.temple?.name || 'Temple'}`
         };
       }
@@ -57,6 +59,7 @@ export function renderCalendarWidget(
         return {
           status: 'pending',
           label: pendingOrAccepted.status === 'accepted' ? 'Accepted (Hold)' : 'Pending',
+          shortLabel: pendingOrAccepted.status === 'accepted' ? 'Hold' : 'Pending',
           details: `Requested for ${pendingOrAccepted.festival?.name || 'Festival'}`
         };
       }
@@ -70,6 +73,7 @@ export function renderCalendarWidget(
         return {
           status: 'booked',
           label: 'Fully Booked',
+          shortLabel: `0/${totalQuantity}`,
           details: 'Out of stock due to multiple reservations'
         };
       }
@@ -82,6 +86,7 @@ export function renderCalendarWidget(
         return {
           status: 'pending',
           label: `Pending: ${pendingRequested} units requested`,
+          shortLabel: `${remaining}/${totalQuantity}`,
           details: `Remaining stock: ${remaining}/${totalQuantity}`
         };
       }
@@ -89,11 +94,12 @@ export function renderCalendarWidget(
       return {
         status: 'available',
         label: `Available: ${remaining}/${totalQuantity}`,
+        shortLabel: `${remaining}/${totalQuantity}`,
         details: null
       };
     }
 
-    return { status: 'available', label: 'Available', details: null };
+    return { status: 'available', label: 'Available', shortLabel: 'Avail', details: null };
   }
 
   function update() {
@@ -125,8 +131,8 @@ export function renderCalendarWidget(
       return `
         <div class="calendar-cell ${cellClass}" data-date="${cell.dateStr}" style="cursor: pointer;">
           <span style="font-size: 0.9rem; align-self: flex-start;">${cell.dayNum}</span>
-          <span style="font-size: 0.65rem; align-self: stretch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; font-weight: 500;">
-            ${dayInfo.label}
+          <span class="calendar-cell-label">
+            ${dayInfo.shortLabel}
           </span>
         </div>
       `;

@@ -116,7 +116,7 @@ export interface DatabaseSchema {
 
 const LOCAL_STORAGE_KEY = 'pooram_connect_db';
 const DB_VERSION_KEY = 'pooram_connect_db_version';
-const CURRENT_DB_VERSION = '2'; // Increment this to force client-side re-seeding
+const CURRENT_DB_VERSION = '4'; // Increment this to force client-side re-seeding
 
 // SHA-256 hash helper for secure password comparisons
 export function sha256(message: string): string {

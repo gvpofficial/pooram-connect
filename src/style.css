@@ -454,16 +454,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .calendar-cell {
   aspect-ratio: 1;
+  min-height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 6px;
+  padding: 6px 4px;
   border-radius: var(--border-radius-sm);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   position: relative;
   transition: transform 0.1s ease;
+}
+
+.calendar-cell-label {
+  font-size: 0.65rem;
+  align-self: stretch;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 500;
+  text-align: center;
 }
 
 .calendar-cell:hover {
@@ -516,6 +527,22 @@ h1, h2, h3, h4, h5, h6 {
 .legend-dot.available { background-color: var(--color-available); }
 .legend-dot.pending { background-color: var(--color-pending); }
 .legend-dot.booked { background-color: var(--color-booked); }
+
+@media (max-width: 768px) {
+  .calendar-widget {
+    padding: 16px;
+  }
+  .calendar-grid {
+    gap: 6px;
+  }
+  .calendar-cell {
+    padding: 4px 2px;
+    min-height: 40px;
+  }
+  .calendar-cell-label {
+    font-size: 0.6rem;
+  }
+}
 
 /* Dashboard Structures */
 .dashboard-layout {

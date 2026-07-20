@@ -116,7 +116,7 @@ export interface DatabaseSchema {
 
 const LOCAL_STORAGE_KEY = 'pooram_connect_db';
 const DB_VERSION_KEY = 'pooram_connect_db_version';
-const CURRENT_DB_VERSION = '2'; // Increment this to force client-side re-seeding
+const CURRENT_DB_VERSION = '4'; // Increment this to force client-side re-seeding
 
 // SHA-256 hash helper for secure password comparisons
 export function sha256(message: string): string {
@@ -129,6 +129,18 @@ export function sha256(message: string): string {
   const hex = (hash >>> 0).toString(16).padStart(8, '0');
   return hex.repeat(8).substring(0, 64); // mock 64-char hex
 }
+
+export function resolveUrl(path: string): string {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+    return path;
+  }
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const baseUrl = (import.meta.env && import.meta.env.BASE_URL) || '/';
+  const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  return `${base}${cleanPath}`;
+}
+
 
 // Database helper functions
 export function getDb(): DatabaseSchema {

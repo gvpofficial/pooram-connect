@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="140" viewBox="0 0 1200 140"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Portal Roles and Dashboards Section Header</title>
+  <desc id="desc">Heritage styled section header for the Portal Roles &amp; Dashboards section.</desc>
+
+  <!-- Background Base -->
+  <rect width="1200" height="140" rx="10" fill="#200C09" />
+  
+  <!-- Left Decorative Border -->
+  <rect x="0" y="0" width="12" height="140" fill="#D4AF37" rx="4" />
+  
+  <!-- Bottom Decorative Border Line -->
+  <line x1="0" y1="139" x2="1200" y2="139" stroke="#D4AF37" stroke-width="1.5" stroke-opacity="0.3" />
+
+  <!-- Accent Circle Motif -->
+  <g transform="translate(45, 70)" opacity="0.8">
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#D4AF37" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="10" fill="#D4AF37" />
+  </g>
+
+  <!-- Header Title -->
+  <text x="85" y="84" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#FAF6ED" letter-spacing="1">
+    Portal Roles &amp; Dashboards
+  </text>
+  
+  <!-- Subtitle/Metadata -->
+  <text x="1140" y="80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#BDAAA0" text-anchor="end" font-weight="bold" letter-spacing="1">
+    COMMITTEES • OWNERS • ADMINISTRATORS
+  </text>
+</svg>

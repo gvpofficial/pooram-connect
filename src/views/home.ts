@@ -1,4 +1,4 @@
-import { dbService } from '../db';
+import { dbService, resolveUrl } from '../db';
 import { renderLayout, setupLayoutEvents } from '../components/layout';
 
 export function renderHome() {
@@ -11,7 +11,7 @@ export function renderHome() {
   const festivalsHtml = festivals.map(fest => `
     <div class="card">
       <div class="card-img-wrapper">
-        <img src="${fest.imageUrl}" alt="${fest.name}" class="card-img" />
+        <img src="${resolveUrl(fest.imageUrl)}" alt="${fest.name}" class="card-img" />
       </div>
       <div class="card-content">
         <span class="badge badge-info" style="margin-bottom: 8px; display: inline-block;">
@@ -35,7 +35,7 @@ export function renderHome() {
   const elephantsHtml = elephants.map(e => `
     <div class="card">
       <div class="card-img-wrapper">
-        <img src="${e.imageUrl}" alt="${e.name}" class="card-img" />
+        <img src="${resolveUrl(e.imageUrl)}" alt="${e.name}" class="card-img" />
       </div>
       <div class="card-content">
         <h3 style="font-size: 1.2rem; margin-bottom: 8px;">${e.name}</h3>
@@ -60,7 +60,7 @@ export function renderHome() {
   const accessoriesHtml = accessories.map(a => `
     <div class="card">
       <div class="card-img-wrapper">
-        <img src="${a.imageUrl}" alt="${a.name}" class="card-img" />
+        <img src="${resolveUrl(a.imageUrl)}" alt="${a.name}" class="card-img" />
       </div>
       <div class="card-content">
         <span class="badge" style="background-color: var(--deep-green-light); color: var(--deep-green); margin-bottom: 8px; display: inline-block; font-size: 0.75rem;">

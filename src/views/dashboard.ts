@@ -1,4 +1,4 @@
-import { dbService } from '../db';
+import { dbService, resolveUrl } from '../db';
 import { getSession } from '../auth';
 import { renderLayout, setupLayoutEvents } from '../components/layout';
 import { navigate } from '../router';
@@ -525,7 +525,7 @@ function renderElephantOwnerDashboard(session: any): string {
 
   const elephantListHtml = elephants.map(e => `
     <div class="card" style="padding: 20px; display: flex; gap: 20px; align-items: center;">
-      <img src="${e.imageUrl}" alt="${e.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" />
+      <img src="${resolveUrl(e.imageUrl)}" alt="${e.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" />
       <div style="flex-grow: 1;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <h4 style="font-size: 1.2rem; color: var(--maroon-primary);">${e.name}</h4>
@@ -707,7 +707,7 @@ function renderAccessoryOwnerDashboard(session: any): string {
 
   const listHtml = accessories.map(a => `
     <div class="card" style="padding: 20px; display: flex; gap: 20px; align-items: center;">
-      <img src="${a.imageUrl}" alt="${a.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" />
+      <img src="${resolveUrl(a.imageUrl)}" alt="${a.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" />
       <div style="flex-grow: 1;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <h4 style="font-size: 1.2rem; color: var(--maroon-primary);">${a.name}</h4>

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="Kerala Pooram Management Portal (Pooram Connect)">
+</p>
+
 # 🐘 Kerala Pooram Management Portal (Pooram Connect)
 
 Pooram Connect is a state-of-the-art, centralized digital ecosystem designed to streamline the planning, coordination, and execution of Kerala's iconic temple festivals (Poorams and Ulsavams). By bridging the gap between **Temple Festival Committees**, **Elephant Owners**, and **Traditional Accessory Owners**, the platform brings transparency, safety, and modern organizational efficiency to Kerala's rich cultural heritage.
@@ -32,7 +36,12 @@ The portal loads the active theme early using an inline script in [index.html](f
 
 ---
 
-## ⚙️ Core Architecture & Tech Stack
+<br>
+<p align="center">
+  <img src="./assets/readme/section-architecture.svg" width="100%" alt="Core Architecture &amp; Tech Stack Header">
+</p>
+
+## ⚙️ Core Architecture &amp; Tech Stack
 
 ```mermaid
 graph TD
@@ -56,7 +65,7 @@ Rather than pulling in heavy external routing packages, the portal uses a fast, 
 
 ### 2. Client-Side Relational Database Engine
 A client-side relational database wrapper in [db.ts](file:///D:/gvp%20codes/pooram-connect/src/db.ts) manages state on top of the browser's `localStorage`.
-- **Database Seeding**: Populates initial, verified data from [dbSeed.ts](file:///D:/gvp%20codes/pooram-connect/src/dbSeed.ts) if no database is detected, or if a database version mismatch is triggered via the version-checking key.
+- **Database Seeding**: Populates initial, verified data from [dbSeed.ts](file:///D:/gvp%20codes/pooram-connect/src/dbSeed.ts) if no database is detected, or if a database version mismatch is triggered.
 - **Verification Gates**: Moderates elephants and accessory listings; items added by owners remain unverified until approved by an administrator.
 - **Data Integrity**: Checks for table corruption on startup and restores standard states automatically.
 - **Relational Tables**:
@@ -74,7 +83,12 @@ The auth system in [auth.ts](file:///D:/gvp%20codes/pooram-connect/src/auth.ts) 
 
 ---
 
-## 📅 Booking Workflows & Concurrency Control
+<br>
+<p align="center">
+  <img src="./assets/readme/section-workflows.svg" width="100%" alt="Booking Workflows &amp; Concurrency Control Header">
+</p>
+
+## 📅 Booking Workflows &amp; Concurrency Control
 
 ```mermaid
 sequenceDiagram
@@ -107,7 +121,12 @@ Pooram accessories (like Nettipattam, Chenda instruments, and decorative umbrell
 
 ---
 
-## 👥 Portal Roles & Dashboards
+<br>
+<p align="center">
+  <img src="./assets/readme/section-roles.svg" width="100%" alt="Portal Roles &amp; Dashboards Header">
+</p>
+
+## 👥 Portal Roles &amp; Dashboards
 
 The portal provides target-specific dashboards rendering custom views based on the logged-in user role:
 
@@ -164,6 +183,11 @@ pooram-connect/
 ```
 
 ---
+
+<br>
+<p align="center">
+  <img src="./assets/readme/section-getting-started.svg" width="100%" alt="Developer Getting Started Guide Header">
+</p>
 
 ## 🚀 Developer Getting Started Guide
 

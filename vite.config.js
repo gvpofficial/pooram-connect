@@ -1,19 +1,15 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
 
-export default defineConfig({
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'src/main.ts'),
-      },
-      output: {
-        entryFileNames: 'assets/index.js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/index.[ext]',
-      }
+export default defineConfig(({ mode }) => {
+  // Use '/pooram-connect/' when deploying to GitHub Pages, otherwise default to '/'
+  const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+  const base = isGithubPages ? '/pooram-connect/' : '/';
+
+  return {
+    base,
+    build: {
+      outDir: 'dist',
+      emptyOutDir: true,
     }
-  }
+  };
 });

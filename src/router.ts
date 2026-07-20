@@ -22,12 +22,33 @@ export function addRoute(path: string, handler: RouteHandler) {
 }
 
 export function navigate(path: string, pushState = true) {
+  const baseUrl = (import.meta.env && import.meta.env.BASE_URL) || '/';
+  
+  // Format the path to ensure it has the base path for pushState
+  let resolvedPath = path;
+  if (path.startsWith('/')) {
+    const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    if (cleanBaseUrl && !path.startsWith(cleanBaseUrl + '/')) {
+      resolvedPath = cleanBaseUrl + path;
+    }
+  }
+
   if (pushState) {
-    window.history.pushState({}, '', path);
+    window.history.pushState({}, '', resolvedPath);
   }
   
-  const url = new URL(path, window.location.origin);
-  const pathname = url.pathname;
+  const url = new URL(resolvedPath, window.location.origin);
+  let pathname = url.pathname;
+  
+  const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  if (cleanBaseUrl !== '/') {
+    const baseWithoutTrailing = cleanBaseUrl.slice(0, -1);
+    if (pathname === baseWithoutTrailing) {
+      pathname = '/';
+    } else if (pathname.startsWith(cleanBaseUrl)) {
+      pathname = '/' + pathname.substring(cleanBaseUrl.length);
+    }
+  }
   
   for (const route of routes) {
     const match = pathname.match(route.regex);

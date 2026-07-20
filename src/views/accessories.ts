@@ -1,4 +1,4 @@
-import { dbService } from '../db';
+import { dbService, resolveUrl } from '../db';
 import { getSession } from '../auth';
 import { renderLayout, setupLayoutEvents } from '../components/layout';
 import { renderCalendarWidget } from '../components/calendar';
@@ -105,7 +105,7 @@ export function renderAccessories(params: Record<string, string> = {}) {
         ${list.map(acc => `
           <div class="card">
             <div class="card-img-wrapper">
-              <img src="${acc.imageUrl}" alt="${acc.name}" class="card-img" />
+              <img src="${resolveUrl(acc.imageUrl)}" alt="${acc.name}" class="card-img" />
             </div>
             <div class="card-content">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -271,7 +271,7 @@ export function renderAccessoryDetail(params: Record<string, string>) {
           <!-- Left Column: Accessory Details -->
           <div>
             <div style="border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--box-shadow-lg); border: var(--border-glow); margin-bottom: 32px; height: 400px;">
-              <img src="${accessory.imageUrl}" alt="${accessory.name}" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="${resolveUrl(accessory.imageUrl)}" alt="${accessory.name}" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
 
             <h1 style="font-size: 2.5rem; margin-bottom: 8px; color: var(--maroon-primary);">${accessory.name}</h1>

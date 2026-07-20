@@ -1,4 +1,4 @@
-import { dbService } from '../db';
+import { dbService, resolveUrl } from '../db';
 import { renderLayout, setupLayoutEvents } from '../components/layout';
 
 const DISTRICTS = [
@@ -109,7 +109,7 @@ export function renderFestivals() {
         ${list.map(fest => `
           <div class="card">
             <div class="card-img-wrapper">
-              <img src="${fest.imageUrl}" alt="${fest.name}" class="card-img" />
+              <img src="${resolveUrl(fest.imageUrl)}" alt="${fest.name}" class="card-img" />
             </div>
             <div class="card-content">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">

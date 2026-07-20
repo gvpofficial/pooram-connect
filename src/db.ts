@@ -130,6 +130,18 @@ export function sha256(message: string): string {
   return hex.repeat(8).substring(0, 64); // mock 64-char hex
 }
 
+export function resolveUrl(path: string): string {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+    return path;
+  }
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const baseUrl = (import.meta.env && import.meta.env.BASE_URL) || '/';
+  const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  return `${base}${cleanPath}`;
+}
+
+
 // Database helper functions
 export function getDb(): DatabaseSchema {
   try {

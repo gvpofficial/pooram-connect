@@ -40,12 +40,8 @@ export function renderLayout(contentHtml: string, currentPath: string): string {
   return `
     <header class="header">
       <div class="container header-container">
-        <a href="/" class="logo-section">
-          <span class="logo-icon">🐘</span>
-          <div class="logo-text">
-            <h1>Pooram Connect</h1>
-            <p>Kerala Temple Festival Portal</p>
-          </div>
+        <a href="/" class="logo-section" style="display: flex; align-items: center; text-decoration: none;">
+          <img src="./assets/brand/logo-dark.svg" alt="Pooram Connect Logo" style="height: 64px; width: auto; max-width: 100%; display: block;" />
         </a>
 
         <nav class="nav-links">
@@ -64,11 +60,8 @@ export function renderLayout(contentHtml: string, currentPath: string): string {
       <div class="container">
         <div class="footer-grid">
           <div class="footer-info">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-              <span style="font-size: 1.8rem;">🐘</span>
-              <h3 style="color: var(--gold-primary); font-family: var(--font-accent); font-size: 1.2rem; margin: 0;">
-                Pooram Connect
-              </h3>
+            <div style="display: flex; align-items: center; margin-bottom: 16px;">
+              <img src="./assets/brand/logo-dark.svg" alt="Pooram Connect Logo" style="height: 46px; width: auto; max-width: 100%; display: block;" />
             </div>
             <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 320px;">
               The official centralized state ecosystem for temple festival planning, majestic elephant bookings, and traditional festival accessory rentals.

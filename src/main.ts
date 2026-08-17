@@ -1,5 +1,5 @@
 import './style.css';
-import { addRoute, initRouter, navigate } from './router';
+import { addRoute, initRouter, navigate, virtualPath } from './router';
 import { renderHome } from './views/home';
 import { renderLogin } from './views/login';
 import { renderRegister } from './views/register';
@@ -44,11 +44,12 @@ addRoute('/dashboard', () => renderDashboard());
 initRouter();
 
 // Trigger initial navigation based on the current window path
-const initialPath = window.location.pathname + window.location.search;
+const isFile = window.location.protocol === 'file:';
+const initialPath = isFile ? '/' : (window.location.pathname + window.location.search);
 navigate(initialPath, false);
 
 // Listen to session changes to re-render active header state without refreshing
 window.addEventListener('session-changed', () => {
-  const currentPath = window.location.pathname + window.location.search;
+  const currentPath = isFile ? virtualPath : (window.location.pathname + window.location.search);
   navigate(currentPath, false);
 });

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="500" height="120" role="img" aria-label="Pooram Connect Logo (Light Theme)">
+  <defs>
+    <!-- Fonts -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Plus+Jakarta+Sans:wght@500;700;800&amp;display=swap');
+      
+      .logo-title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 34px;
+        font-weight: 900;
+        fill: #800000; /* Maroon Primary */
+      }
+      
+      .logo-subtitle {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        fill: #331A15; /* Dark Brown */
+        letter-spacing: 3.5px;
+      }
+      
+      .gold-stroke {
+        stroke: #D4AF37;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      
+      .gold-fill {
+        fill: url(#gold-grad);
+      }
+      
+      .maroon-fill {
+        fill: #800000;
+      }
+    </style>
+    
+    <!-- Metallic Gold Gradient -->
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF6ED" />
+      <stop offset="30%" stop-color="#D4AF37" />
+      <stop offset="70%" stop-color="#B8860B" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+  </defs>
+
+  <!-- BACKGROUND GRAPHIC (Left side, centered at X=60, Y=60) -->
+  <g id="logo-icon" transform="translate(10, 0)">
+    <!-- Decorative Concentric Rings (Temple Frame Motif) -->
+    <circle cx="60" cy="60" r="48" stroke="#D4AF37" stroke-width="1.2" fill="none" opacity="0.25" />
+    <circle cx="60" cy="60" r="43" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="3 3" fill="none" opacity="0.6" />
+
+    <!-- Elephant Ears (Symmetrical, Rich Maroon with Gold stroke) -->
+    <!-- Left Ear -->
+    <path d="M 60,65 C 60,42 32,37 25,51 C 18,65 27,81 41,83 C 47,84 51,78 51,72 Z" class="maroon-fill gold-stroke" />
+    <!-- Right Ear -->
+    <path d="M 60,65 C 60,42 88,37 95,51 C 102,65 93,81 79,83 C 73,84 69,78 69,72 Z" class="maroon-fill gold-stroke" />
+
+    <!-- Tusks (Ivory filled with fine gold border) -->
+    <!-- Left Tusk -->
+    <path d="M 52,77 C 45,77 40,72 38,64 C 43,69 48,73 52,74 Z" fill="#FAF6ED" stroke="#D4AF37" stroke-width="1" />
+    <!-- Right Tusk -->
+    <path d="M 68,77 C 75,77 80,72 82,64 C 77,69 72,73 68,74 Z" fill="#FAF6ED" stroke="#D4AF37" stroke-width="1" />
+
+    <!-- Trunk (S-Curve pointing right at bottom) -->
+    <path d="M 54,70 L 54,93 C 54,101 60,105 65,105 C 70,105 72,101 69,97 C 67,94 63,95 63,98 C 63,100 65,101 66,100 C 67,99 67,98 66,97 C 65,97 64,98 64,99 C 64,102 60,102 60,98 L 60,70 Z" class="maroon-fill gold-stroke" />
+
+    <!-- Nettipattam Red Felt Backing -->
+    <path d="M 43,45 C 43,45 60,42 77,45 C 75,61 68,79 60,84 C 52,79 45,61 43,45 Z" fill="#4A0000" />
+    
+    <!-- Nettipattam Gold Shield -->
+    <path d="M 46,47 C 46,47 60,45 74,47 C 72,59 66,73 60,77 C 54,73 48,59 46,47 Z" class="gold-fill" />
+
+    <!-- Nettipattam Gold Beads (Bubbles reflection) -->
+    <!-- Top Row -->
+    <circle cx="60" cy="51" r="2.5" fill="#FAF6ED" />
+    <circle cx="53" cy="51" r="2" fill="#FAF6ED" />
+    <circle cx="67" cy="51" r="2" fill="#FAF6ED" />
+    <circle cx="48" cy="52" r="1.5" fill="#FAF6ED" />
+    <circle cx="72" cy="52" r="1.5" fill="#FAF6ED" />
+    <!-- Center Line -->
+    <circle cx="60" cy="58" r="2" fill="#FAF6ED" />
+    <circle cx="60" cy="65" r="1.5" fill="#FAF6ED" />
+    <circle cx="60" cy="71" r="1" fill="#FAF6ED" />
+    <!-- Outer Curves -->
+    <circle cx="54" cy="58" r="1.5" fill="#FAF6ED" />
+    <circle cx="55" cy="65" r="1.2" fill="#FAF6ED" />
+    <circle cx="66" cy="58" r="1.5" fill="#FAF6ED" />
+    <circle cx="65" cy="65" r="1.2" fill="#FAF6ED" />
+
+    <!-- Traditional Tassels (Red & Green wool details on top curve) -->
+    <circle cx="42" cy="44" r="1.8" fill="#C62828" />
+    <circle cx="47" cy="42.5" r="1.8" fill="#2E7D32" />
+    <circle cx="53.5" cy="41.5" r="1.8" fill="#C62828" />
+    <circle cx="60" cy="41.2" r="1.8" fill="#2E7D32" />
+    <circle cx="66.5" cy="41.5" r="1.8" fill="#C62828" />
+    <circle cx="73" cy="42.5" r="1.8" fill="#2E7D32" />
+    <circle cx="78" cy="44" r="1.8" fill="#C62828" />
+  </g>
+
+  <!-- LOGO TEXT SECTION -->
+  <text x="140" y="58" class="logo-title">Pooram Connect</text>
+  <text x="142" y="86" class="logo-subtitle">KERALA TEMPLE FESTIVAL PORTAL</text>
+</svg>

@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kerala Pooram Management Portal</title>
     <meta name="description" content="A centralized digital ecosystem for managing Kerala temple festivals, elephant bookings, and traditional Pooram accessory rentals." />
-    <link rel="icon" type="image/png" href="favicon.png?v=3" />
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" />
     <script>
-      const theme = localStorage.getItem('pooram_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      let theme = 'light';
+      try {
+        theme = localStorage.getItem('pooram_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      } catch (e) {
+        console.warn('localStorage is unavailable:', e);
+        theme = (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      }
       document.documentElement.setAttribute('data-theme', theme);
     </script>
     <script type="module" src="/src/main.ts"></script>

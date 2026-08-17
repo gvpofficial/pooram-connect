@@ -85,23 +85,45 @@ export function renderHome() {
   const html = `
     <div>
       <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="container">
-          <h2 class="hero-title poornam-accent">കേരള പൂരം</h2>
-          <h1 class="hero-title" style="font-size: 2.8rem; margin-top: -10px;">
-            Kerala Pooram Management Portal
-          </h1>
-          <p class="hero-subtitle">
-            A centralized state ecosystem for temple festival planning, majestic elephant bookings, and traditional festival accessory rentals.
-          </p>
-          <div style="display: flex; justify-content: center; gap: 16px;">
-            <a href="/festivals" class="btn btn-primary">
-              Explore Festivals &rarr;
-            </a>
-            <a href="/login" class="btn btn-secondary">
-              Access Portal Dashboards
-            </a>
+      <section class="hero-section" style="text-align: left; padding: 60px 0; width: 100%;">
+        <div class="container hero-grid-container" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; width: 100%;">
+          
+          <!-- Left Column (Text & CTA) -->
+          <div>
+            <h2 class="hero-title poornam-accent" style="font-size: 1.6rem; letter-spacing: 2px; margin-bottom: 8px;">
+              POORAM CONNECT
+            </h2>
+            <h1 class="hero-title" style="font-size: 3.2rem; margin-top: 0; line-height: 1.1; margin-bottom: 20px;">
+              Kerala Temple Festival Portal
+            </h1>
+            <p class="hero-subtitle" style="margin: 0 0 36px 0; text-align: left; font-size: 1.15rem; line-height: 1.5; color: #F0E6DF;">
+              A centralized state ecosystem for temple festival planning, majestic elephant bookings, and traditional festival accessory rentals.
+            </p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <a href="/festivals" class="btn btn-primary">
+                Explore Festivals &rarr;
+              </a>
+              <a href="/login" class="btn btn-secondary">
+                Access Portal Dashboards
+              </a>
+            </div>
           </div>
+          
+          <!-- Right Column (3D Parallax Elephant Card) -->
+          <div class="hero-3d-wrapper" style="perspective: 1000px; display: flex; justify-content: center; position: relative;">
+            <div class="hero-3d-card" style="width: 100%; max-width: 440px; aspect-ratio: 4/3; transform-style: preserve-3d; transition: transform 0.5s ease; border-radius: var(--border-radius-lg); overflow: hidden; position: relative;">
+              <!-- 3D Elephant Image -->
+              <img src="/images/festival_elephant_3d.jpg" alt="Kerala Pooram Festival Elephant" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: block;" />
+              <!-- Glass Overlay Reflection -->
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.3) 100%); pointer-events: none; z-index: 2;"></div>
+              <!-- Floating Golden Frame Badge -->
+              <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(51, 26, 21, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 12px 18px; border-radius: var(--border-radius-sm); border: 1px solid var(--gold-primary); color: white; transform: translateZ(30px); z-index: 3; box-shadow: var(--box-shadow-md);">
+                <h4 style="color: var(--gold-primary); font-family: var(--font-title); font-size: 1rem; margin-bottom: 2px;">Majestic Elephants</h4>
+                <p style="font-size: 0.75rem; color: #BDAAA0; margin: 0;">Centralized Devaswom Registry &amp; Health Verification</p>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </section>
 

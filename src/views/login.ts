@@ -19,6 +19,10 @@ export function renderLogin(params: Record<string, string> = {}) {
         <div style="max-width: 450px; margin: 0 auto; width: 100%;">
           <div class="card" style="padding: 40px; border-top: 4px solid var(--gold-primary);">
             <div style="text-align: center; margin-bottom: 32px;">
+              <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+                <img src="./assets/brand/logo-light.svg" class="theme-logo-light" alt="Pooram Connect Logo" style="height: 58px; width: auto; display: block;" />
+                <img src="./assets/brand/logo-dark.svg" class="theme-logo-dark" alt="Pooram Connect Logo" style="height: 58px; width: auto; display: block;" />
+              </div>
               <h2 style="font-size: 1.8rem; color: var(--maroon-primary);">Portal Sign In</h2>
               <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">
                 Access your committee or owner dashboards

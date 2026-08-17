@@ -251,7 +251,7 @@ export const initialDbData = {
       "location": "Swaraj Round, Thrissur",
       "district": "Thrissur",
       "history": "The historic Shiva temple that serves as the main venue for the world-famous Thrissur Pooram. Founded by Sage Parasurama according to legend.",
-      "imageUrl": "/images/temple_vadakkunnathan.jpg",
+      "imageUrl": "/assets/temples/vadakkunnathan.jpg",
       "createdAt": "2026-07-02T10:16:42.024Z"
     },
     {
@@ -261,7 +261,7 @@ export const initialDbData = {
       "location": "Nemmara, Palakkad",
       "district": "Palakkad",
       "history": "The holy shrine dedicated to Goddess Bhagavathy, hosting the annual Nemmara-Vellangi Vela, one of Kerala's most vibrant visual spectacles.",
-      "imageUrl": "/images/temple_nemmara.jpg",
+      "imageUrl": "/assets/temples/nemmara.jpg",
       "createdAt": "2026-07-02T10:16:42.024Z"
     },
     {
@@ -271,7 +271,7 @@ export const initialDbData = {
       "location": "Arattupuzha, Thrissur",
       "district": "Thrissur",
       "history": "A historical Sastha Temple located in Thrissur, home to the oldest and most grand Devamela festival in India, where 23 deities from neighboring villages assemble.",
-      "imageUrl": "/images/temple_arattupuzha.jpg",
+      "imageUrl": "/assets/temples/arattupuzha.jpg",
       "createdAt": "2026-07-15T14:32:00.000Z"
     },
     {
@@ -281,7 +281,7 @@ export const initialDbData = {
       "location": "Wadakkanchery, Thrissur",
       "district": "Thrissur",
       "history": "A powerful Bhagavathy temple situated amidst paddy fields, celebrated for its unique structural design next to railway tracks and the high-energy Uthralikavu Pooram.",
-      "imageUrl": "/images/temple_uthralikavu.jpg",
+      "imageUrl": "/assets/temples/uthralikavu.jpg",
       "createdAt": "2026-07-15T14:32:00.000Z"
     },
     {
@@ -291,7 +291,7 @@ export const initialDbData = {
       "location": "Palappuram, Palakkad",
       "district": "Palakkad",
       "history": "A renowned shrine dedicated to Goddess Durga, hosting the famous Chinakkathoor Pooram with its distinct traditional arts like shadow puppetry and grand horse effigies.",
-      "imageUrl": "/images/temple_chinakkathoor.jpg",
+      "imageUrl": "/assets/temples/chinakkathoor.jpg",
       "createdAt": "2026-07-15T14:32:00.000Z"
     },
     {
@@ -301,7 +301,7 @@ export const initialDbData = {
       "location": "Thirunakkara, Kottayam",
       "district": "Kottayam",
       "history": "A historic 500-year-old temple dedicated to Lord Shiva built by the King of Thekkumkoor, famous for its magnificent Kerala style mural paintings and the annual Thirunakkara Pooram.",
-      "imageUrl": "/images/temple_thirunakkara.jpg",
+      "imageUrl": "/assets/temples/thirunakkara.jpg",
       "createdAt": "2026-07-15T14:32:00.000Z"
     },
     {
@@ -311,7 +311,7 @@ export const initialDbData = {
       "location": "Cherpu, Thrissur",
       "district": "Thrissur",
       "history": "One of the oldest and most grand Shiva temples in Kerala, renowned for its double-storied circular sanctum and hosting the ancient Peruvanam Pooram featuring unique, traditional percussion ensembles.",
-      "imageUrl": "/images/temple_peruvanam.jpg",
+      "imageUrl": "/assets/temples/peruvanam.jpg",
       "createdAt": "2026-07-15T14:48:00.000Z"
     },
     {
@@ -321,7 +321,7 @@ export const initialDbData = {
       "location": "Mavelikara, Alappuzha",
       "district": "Alappuzha",
       "history": "A highly famous temple dedicated to Goddess Bhadrakali, famous for hosting the Chettikulangara Bharani where towering, decorated horse effigies (Kettukazhcha) are pulled by thousands of devotees.",
-      "imageUrl": "/images/temple_chettikulangara.jpg",
+      "imageUrl": "/assets/temples/chettikulangara.jpg",
       "createdAt": "2026-07-15T14:48:00.000Z"
     },
     {
@@ -331,7 +331,7 @@ export const initialDbData = {
       "location": "Adoor, Pathanamthitta",
       "district": "Pathanamthitta",
       "history": "A magnificent shrine dedicated to Lord Krishna (as Parthasarathy), celebrated across South Kerala for hosting the annual Adoor Gajamela featuring a pageantry of nine giant elephants.",
-      "imageUrl": "/images/temple_adoor.jpg",
+      "imageUrl": "/assets/temples/adoor.jpg",
       "createdAt": "2026-07-15T14:48:00.000Z"
     },
     {
@@ -341,7 +341,7 @@ export const initialDbData = {
       "location": "Thripunithura, Ernakulam",
       "district": "Ernakulam",
       "history": "The royal shrine of the Cochin dynasty, dedicated to Lord Vishnu. It hosts the world-famous Vrishchikotsavam, celebrated with 15 caparisoned elephants twice a day for eight consecutive days.",
-      "imageUrl": "/images/temple_thripunithura.jpg",
+      "imageUrl": "/assets/temples/thripunithura.jpg",
       "createdAt": "2026-07-15T14:48:00.000Z"
     }
   ],
@@ -353,7 +353,7 @@ export const initialDbData = {
       "startDate": "2026-04-26",
       "endDate": "2026-04-28",
       "description": "The mother of all Poorams, featuring the majestic Kudamattom (umbrella exchange) and the historic Ilanjithara Melam with over 200 artists.",
-      "imageUrl": "/images/festival_thrissur.jpg",
+      "imageUrl": "/assets/festivals/thrissur.jpg",
       "schedule": {
         "Day 1": "Flag Hoisting & Kodiyettam (Procession from constituent temples)",
         "Day 2": "Sample Vedikettu (Fireworks) & Kudamattom (Umbrella exchange at Southern Gate)",
@@ -369,7 +369,7 @@ export const initialDbData = {
       "startDate": "2026-04-03",
       "endDate": "2026-04-05",
       "description": "Known for its giant decorated canopies (Aana Pandhal) and competing fireworks displays between the Nemmara and Vellangi wings.",
-      "imageUrl": "/images/festival_nemmara.jpg",
+      "imageUrl": "/assets/festivals/nemmara.jpg",
       "schedule": {
         "Day 1": "Temple rituals, Kodiyettam, and Vellangi Vela procession",
         "Day 2": "Grand fireworks, traditional Chenda Melam, and illumination of Pandhals"
@@ -384,7 +384,7 @@ export const initialDbData = {
       "startDate": "2027-04-17",
       "endDate": "2027-04-19",
       "description": "The grand mother of all Poorams, featuring the majestic Kudamattom (umbrella exchange), historic Ilanjithara Melam with over 200 artists, and world-famous fireworks at Thekkinkadu Maidan.",
-      "imageUrl": "/images/festival_thrissur.jpg",
+      "imageUrl": "/assets/festivals/thrissur.jpg",
       "schedule": {
         "Day 1 (April 17, 2027)": "Kodiyettam & Madathil Varavu procession from constituent temples",
         "Day 2 (April 18, 2027)": "Sample Vedikettu (Fireworks) & grand Kudamattom at Southern Gate",
@@ -400,7 +400,7 @@ export const initialDbData = {
       "startDate": "2027-04-03",
       "endDate": "2027-04-04",
       "description": "Celebrated at the Nellikulangara Bhagavathy Temple, known for the competing wings of Nemmara and Vellangi, giant illuminated structures (Aana Pandhal), and explosive firework displays.",
-      "imageUrl": "/images/festival_nemmara.jpg",
+      "imageUrl": "/assets/festivals/nemmara.jpg",
       "schedule": {
         "Day 1 (April 3, 2027)": "Vela procession, traditional Chenda Melam, and illumination of Pandhals",
         "Day 2 (April 4, 2027)": "Grand fireworks display & farewell ceremony"
@@ -415,7 +415,7 @@ export const initialDbData = {
       "startDate": "2027-03-20",
       "endDate": "2027-03-21",
       "description": "The oldest temple festival in Kerala (referred to as the Devamela), where 23 deities from various shrines assemble on caparisoned elephants for a grand visual extravaganza.",
-      "imageUrl": "/images/festival_arattupuzha.jpg",
+      "imageUrl": "/assets/temples/arattupuzha.jpg",
       "schedule": {
         "Day 1 (March 20, 2027)": "Sasthavinte Pooram and grand assembly of 23 deities on decorated elephants",
         "Day 2 (March 21, 2027)": "Ritualistic Arattu (holy bath) ceremony at the river and farewell procession"
@@ -430,7 +430,7 @@ export const initialDbData = {
       "startDate": "2027-03-02",
       "endDate": "2027-03-03",
       "description": "Held at the Sree Ruthira Mahakalikavu Temple, famous for its grand daytime elephant pageantry and high-intensity fireworks that shake the Wadakkanchery valley.",
-      "imageUrl": "/images/festival_uthralikavu.jpg",
+      "imageUrl": "/assets/temples/uthralikavu.jpg",
       "schedule": {
         "Day 1 (March 2, 2027)": "Kodiyettam and combined elephant pageantry (Kottikayattam) in the fields",
         "Day 2 (March 3, 2027)": "Late night fireworks and traditional percussion ensemble (Panchavadyam)"
@@ -445,7 +445,7 @@ export const initialDbData = {
       "startDate": "2027-02-21",
       "endDate": "2027-02-22",
       "description": "Celebrated at Sree Chinakkathoor Bhagavathy Temple, noted for its massive procession of dummy horses and bulls (Kudhirakali), shadow puppetry (Tholpavakoothu), and a stunning line-up of 17 elephants.",
-      "imageUrl": "/images/festival_chinakkathoor.jpg",
+      "imageUrl": "/assets/temples/chinakkathoor.jpg",
       "schedule": {
         "Day 1 (February 21, 2027)": "Tholpavakoothu performance, Kudhirakali procession, and major elephant line-up",
         "Day 2 (February 22, 2027)": "Kumbham Makam special prayers and Aarattu procession"
@@ -460,7 +460,7 @@ export const initialDbData = {
       "startDate": "2027-03-23",
       "endDate": "2027-03-24",
       "description": "A historic temple festival in Kottayam featuring traditional art forms like Mayilattom and Velakali, ending with a majestic procession of 9 caparisoned elephants accompanied by Panchavadyam.",
-      "imageUrl": "/images/festival_thirunakkara.jpg",
+      "imageUrl": "/assets/temples/thirunakkara.jpg",
       "schedule": {
         "Day 1 (March 23, 2027)": "Grand Pooram procession with 9 caparisoned elephants and traditional melam",
         "Day 2 (March 24, 2027)": "Aarattu ceremony and flag lowering"
@@ -475,7 +475,7 @@ export const initialDbData = {
       "startDate": "2027-03-18",
       "endDate": "2027-03-19",
       "description": "One of the most ancient temple pageants, celebrated at Sree Peruvanam Mahadeva Temple. Famous for the long hours of Peruvanam Panchari Melam, attracting thousands of percussion enthusiasts.",
-      "imageUrl": "/images/festival_peruvanam.jpg",
+      "imageUrl": "/assets/temples/peruvanam.jpg",
       "schedule": {
         "Day 1 (March 18, 2027)": "Kodiyettam, initial rituals, and late evening Sreeveli with 11 caparisoned elephants",
         "Day 2 (March 19, 2027)": "Peruvanam Pooram final procession, Panchari Melam, and ritualistic Aarattu"
@@ -490,7 +490,7 @@ export const initialDbData = {
       "startDate": "2027-03-13",
       "endDate": "2027-03-14",
       "description": "Celebrated on the Bharani Nakshatra of Kumbham. Renowned for Kuthiyottam performance and the visually stunning Kettukazhcha pageantry showcasing giant decorated wooden horses and chariots.",
-      "imageUrl": "/images/festival_chettikulangara.jpg",
+      "imageUrl": "/assets/temples/chettikulangara.jpg",
       "schedule": {
         "Day 1 (March 13, 2027)": "Kuthiyottam performance, traditional prayers, and arrival of Kettukazhcha structures at the temple field",
         "Day 2 (March 14, 2027)": "Grand reception of chariots, devotional cultural events, and flag lowering"
@@ -505,7 +505,7 @@ export const initialDbData = {
       "startDate": "2027-01-19",
       "endDate": "2027-01-20",
       "description": "The crowning glory of the 10-day annual festival at Sree Parthasarathy Temple, featuring nine highly decorated majestic elephants positioned side-by-side in front of a sea of devotees.",
-      "imageUrl": "/images/festival_adoor.jpg",
+      "imageUrl": "/assets/temples/adoor.jpg",
       "schedule": {
         "Day 1 (January 19, 2027)": "Gajamela procession with 9 caparisoned elephants, Panchavadyam, and temple art forms",
         "Day 2 (January 20, 2027)": "Aarattu holy dip ceremony in the local river and concluding prayers"
@@ -520,7 +520,7 @@ export const initialDbData = {
       "startDate": "2027-11-10",
       "endDate": "2027-11-17",
       "description": "The royal 8-day festival at Sree Poornathrayeesa Temple, famous for hosting daily processions with 15 caparisoned elephants in both morning and night, accompanied by legendary Chenda Melam artists.",
-      "imageUrl": "/images/festival_thripunithura.jpg",
+      "imageUrl": "/assets/temples/thripunithura.jpg",
       "schedule": {
         "Day 1 (November 10, 2027)": "Kodiyettam flag hoisting, Thrikkethu prayers, and start of daily double elephant sreevelis",
         "Day 4 (November 13, 2027)": "Valiya Vilakku procession, spectacular temple illumination, and grand Panchavadyam ensemble",
@@ -535,7 +535,7 @@ export const initialDbData = {
       "id": "e-ramachandran",
       "ownerId": "u-owner-ramachandran",
       "name": "Thechikottukavu Ramachandran",
-      "imageUrl": "/images/elephant_ramachandran.jpg",
+      "imageUrl": "/assets/elephants/ramachandran.jpg",
       "history": "The tallest captive elephant in India and second tallest in Asia. Highly revered across Kerala, he is famous for opening the Southern Gopuram Gate of the Vadakkunnathan Temple to officially kickstart the Thrissur Pooram.",
       "age": 63,
       "height": 317,
@@ -553,7 +553,7 @@ export const initialDbData = {
       "id": "e-karnan",
       "ownerId": "u-owner-karnan",
       "name": "Mangalamkunnu Karnan (Legacy)",
-      "imageUrl": "/images/elephant_karnan.jpg",
+      "imageUrl": "/assets/elephants/karnan.jpg",
       "history": "Historically celebrated for his tall posture and exceptional beauty. Known for his legendary Thala Pokkam, Karnan was a beloved king of processions who passed away in 2021, leaving a lasting legacy in Kerala's festival history.",
       "age": 53,
       "height": 308,
@@ -571,7 +571,7 @@ export const initialDbData = {
       "id": "e-rajan",
       "ownerId": "u-owner-rajan",
       "name": "Pampady Rajan",
-      "imageUrl": "/images/elephant_rajan.jpg",
+      "imageUrl": "/assets/elephants/rajan.jpg",
       "history": "One of Kerala's most beloved elephants, famous for his unmatched high head posture ('Thala Pokkam') and extremely calm demeanor. He has been crowned with numerous prestigious awards including 'Gajamaanikyam' and 'Gajarajan'.",
       "age": 50,
       "height": 308,
@@ -589,7 +589,7 @@ export const initialDbData = {
       "id": "e-kalidasan",
       "ownerId": "u-owner-kalidasan",
       "name": "Chirakkal Kalidasan",
-      "imageUrl": "/images/elephant_kalidasan.jpg",
+      "imageUrl": "/assets/elephants/kalidasan.jpg",
       "history": "Known as 'Junior Thechikodu' for his massive build and height. He gained global recognition for starring in the movie 'Baahubali 2: The Conclusion' and is a crowd-puller at major festivals.",
       "age": 47,
       "height": 312,
@@ -607,7 +607,7 @@ export const initialDbData = {
       "id": "e-sivakumar",
       "ownerId": "u-owner-sivakumar",
       "name": "Ernakulam Sivakumar",
-      "imageUrl": "/images/elephant_sivakumar.jpg",
+      "imageUrl": "/assets/elephants/sivakumar.jpg",
       "history": "The chief elephant of the Cochin Devaswom Board, representing the Ernakulam Shiva Temple. He is a gentle giant with a peaceful nature, often carrying the sacred deity of Cochin during Thrissur Pooram.",
       "age": 46,
       "height": 302,
@@ -625,7 +625,7 @@ export const initialDbData = {
       "id": "e-sivaraju",
       "ownerId": "u-owner-sivaraju",
       "name": "Thrikkadavoor Sivaraju",
-      "imageUrl": "/images/elephant_sivaraju.jpg",
+      "imageUrl": "/assets/elephants/sivaraju.jpg",
       "history": "Carrying the title of 'Gajaraja Ratnam', Sivaraju is one of the tallest living elephants in Asia and is renowned for his perfect body structure as defined in the ancient Mathangaleela. He commands record hire fees in Kerala.",
       "age": 54,
       "height": 311,
@@ -643,7 +643,7 @@ export const initialDbData = {
       "id": "e-indrasen",
       "ownerId": "u-owner-guruvayur",
       "name": "Guruvayur Indrasen",
-      "imageUrl": "/images/elephant_indrasen.jpg",
+      "imageUrl": "/assets/elephants/indrasen.jpg",
       "history": "Brought to Kerala from the Sonepur Mela in Bihar and donated to Guruvayur Temple in 1979. He is a senior, highly respected elephant at Punnathur Kotta (Guruvayur Devaswom), beloved for his calm temperament and beautiful tusks.",
       "age": 55,
       "height": 295,
@@ -661,7 +661,7 @@ export const initialDbData = {
       "id": "e-kesavan",
       "ownerId": "u-owner-puthuppally",
       "name": "Puthuppally Kesavan",
-      "imageUrl": "/images/elephant_kesavan.jpg",
+      "imageUrl": "/assets/elephants/kesavan.jpg",
       "history": "A massive elephant standing at 309 cm with an immense fan following across central Kerala. He is noted for his physical symmetry, broad ears, and his highly elegant gait during temple processions.",
       "age": 51,
       "height": 309,
@@ -679,7 +679,7 @@ export const initialDbData = {
       "id": "e-ananthapadmanabhan",
       "ownerId": "u-owner-cherpulassery",
       "name": "Cherpulassery Ananthapadmanabhan",
-      "imageUrl": "/images/elephant_ananthapadmanabhan.jpg",
+      "imageUrl": "/assets/elephants/ananthapadmanabhan.jpg",
       "history": "A majestic elephant of Palakkad region, highly sought after for leading vela processions. He stands out with his beautiful straight posture, healthy tusks, and a tail that touches the ground.",
       "age": 45,
       "height": 306,
@@ -697,7 +697,7 @@ export const initialDbData = {
       "id": "e-g-kesavan",
       "ownerId": "u-owner-guruvayur",
       "name": "Guruvayur Kesavan (Legendary Heritage)",
-      "imageUrl": "/images/elephant_ramachandran.jpg",
+      "imageUrl": "/assets/elephants/ramachandran.jpg",
       "history": "The most legendary elephant in the history of Kerala. Donated to the Guruvayur Temple in 1922, Kesavan was famous for his extreme devotion to the deity, his grand stance, and passing away on Guruvayur Ekadasi day in 1976. A true king of elephants.",
       "age": 72,
       "height": 310,
@@ -718,7 +718,7 @@ export const initialDbData = {
       "ownerId": "u-acc-owner-1",
       "name": "Premium Gold-Plated Nettipattam (1.5m)",
       "category": "Nettipattam",
-      "imageUrl": "/images/accessory_nettipattam.jpg",
+      "imageUrl": "/assets/accessories/nettipattam.jpg",
       "description": "Exquisite elephant forehead ornaments made of high-quality copper alloy double gold-plated, traditional round medallions reflecting sunlight beautifully.",
       "quantityTotal": 15,
       "rentalPrice": 3500,
@@ -735,7 +735,7 @@ export const initialDbData = {
       "ownerId": "u-acc-owner-1",
       "name": "Designer Silk Muthukuda (Assorted Colors)",
       "category": "Muthukuda",
-      "imageUrl": "/images/accessory_muthukuda.jpg",
+      "imageUrl": "/assets/accessories/muthukuda.jpg",
       "description": "Vibrant traditional decorative umbrellas used during Kudamattom, available in deep maroon, bright yellow, royal blue, and gold-trimmed borders.",
       "quantityTotal": 50,
       "rentalPrice": 450,
@@ -752,7 +752,7 @@ export const initialDbData = {
       "ownerId": "u-acc-owner-2",
       "name": "Asuravadyam Chenda Instrument Set",
       "category": "Chenda Melam instruments",
-      "imageUrl": "/images/accessory_chenda.jpg",
+      "imageUrl": "/assets/accessories/chenda.jpg",
       "description": "Handcrafted traditional drums made of jackfruit wood and tightly stretched calfskin, tuned for both Uruttu Chenda and Veeku Chenda performances.",
       "quantityTotal": 20,
       "rentalPrice": 800,

@@ -235,7 +235,7 @@ export function renderAccessoryDetail(params: Record<string, string>) {
             </div>
           `
         : `
-          <div style="padding: 16px; background-color: #FFF3E0; border-radius: 8px; border-left: 4px solid #E65100; color: #E65100; font-size: 0.9rem;">
+          <div style="padding: 16px; background-color: rgba(239, 108, 0, 0.15); border-radius: 8px; border-left: 4px solid #FFA726; color: #FFA726; font-size: 0.9rem;">
             <strong>Verification Pending:</strong> Your committee registration is currently undergoing administrative review. You will be able to book accessories once verified.
           </div>
         `
@@ -307,11 +307,11 @@ export function renderAccessoryDetail(params: Record<string, string>) {
             <div class="card" style="padding: 32px;">
               <h3 style="font-size: 1.4rem; color: var(--maroon-primary); margin-bottom: 16px;">Request Rental Booking</h3>
               
-              <div id="booking-error" style="color: var(--color-booked); background-color: #FFEBEE; padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
+              <div id="booking-error" style="color: var(--color-booked); background-color: rgba(198, 40, 40, 0.15); border: 1px solid rgba(198, 40, 40, 0.35); padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
                 ⚠️ <span id="error-msg"></span>
               </div>
 
-              <div id="booking-success" style="color: var(--color-available); background-color: #E8F5E9; padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
+              <div id="booking-success" style="color: var(--color-available); background-color: rgba(46, 125, 50, 0.15); border: 1px solid rgba(46, 125, 50, 0.35); padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
                 ✅ <span id="success-msg"></span>
               </div>
 

@@ -32,17 +32,17 @@ export function renderRegister(params: Record<string, string> = {}) {
                 <img src="${resolveUrl('/assets/brand/logo-light.svg')}" class="theme-logo-light" alt="Pooram Connect Logo" style="height: 58px; width: auto; display: block;" />
                 <img src="${resolveUrl('/assets/brand/logo-dark.svg')}" class="theme-logo-dark" alt="Pooram Connect Logo" style="height: 58px; width: auto; display: block;" />
               </div>
-              <h2 style="font-size: 1.8rem; color: var(--maroon-primary);">Create Portal Account</h2>
+              <h2 style="font-size: 1.8rem; margin-bottom: 4px;">Create Portal Account</h2>
               <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">
                 Register as a Committee, Elephant Owner, or Accessory Rental service
               </p>
             </div>
 
-            <div id="register-error" style="color: var(--color-booked); background-color: #FFEBEE; padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
+            <div id="register-error" style="color: var(--color-booked); background-color: rgba(198, 40, 40, 0.15); border: 1px solid rgba(198, 40, 40, 0.35); padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
               ⚠️ <span id="error-msg"></span>
             </div>
 
-            <div id="register-success" style="color: var(--color-available); background-color: #E8F5E9; padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
+            <div id="register-success" style="color: var(--color-available); background-color: rgba(46, 125, 50, 0.15); border: 1px solid rgba(46, 125, 50, 0.35); padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
               ✅ <span id="success-msg"></span>
             </div>
 

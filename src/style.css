@@ -48,19 +48,188 @@
 }
 
 [data-theme="dark"] {
+  /* High contrast colors for dark backgrounds */
+  --maroon-primary: #FF856D;
+  --maroon-dark: #FF664C;
+  --maroon-light: #FFA694;
+  
+  --gold-primary: #F0C755;
+  --gold-light: #FBF0D9;
+  --gold-dark: #D4AF37;
+  --gold-glow: rgba(240, 199, 85, 0.25);
+  
   --ivory-bg: #120A08;
   --ivory-card: #1E1210;
-  --text-dark: #F7EFE5;
-  --text-muted: #BDAAA0;
-  --deep-green: #2E5C38;
-  --deep-green-light: #1A311F;
+  --text-dark: #FDF9F3;
+  --text-muted: #D1C2B8;
+  
+  --deep-green: #4CAF50;
+  --deep-green-light: rgba(76, 175, 80, 0.2);
   --dark-brown: #0D0504;
   --dark-brown-light: #1E100E;
   
-  --box-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --box-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-  --border-glow: 1px solid rgba(212, 175, 55, 0.15);
+  /* Calendar Code Colors for Dark Mode */
+  --color-available: #66BB6A;
+  --color-pending: #FFA726;
+  --color-booked: #EF5350;
+  
+  --box-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --box-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --border-glow: 1px solid rgba(240, 199, 85, 0.22);
+}
+
+/* High Contrast Dark Mode Component Overrides */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2 {
+  color: var(--gold-light);
+}
+
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--gold-primary);
+}
+
+[data-theme="dark"] .card-title {
+  color: var(--gold-primary);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(240, 199, 85, 0.2);
+}
+
+[data-theme="dark"] .search-bar-container {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(240, 199, 85, 0.2);
+}
+
+[data-theme="dark"] .dashboard-sidebar {
+  background-color: #160D0B;
+  border-right: 1px solid rgba(240, 199, 85, 0.18);
+}
+
+[data-theme="dark"] .dashboard-content {
+  background-color: var(--ivory-bg);
+}
+
+[data-theme="dark"] .form-label {
+  color: var(--gold-light);
+}
+
+[data-theme="dark"] .form-control {
+  background-color: #170E0C;
+  border: 1px solid rgba(240, 199, 85, 0.25);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 2px rgba(240, 199, 85, 0.25);
+}
+
+[data-theme="dark"] select.form-control option {
+  background-color: #1E1210;
+  color: #FDF9F3;
+}
+
+[data-theme="dark"] .btn-maroon {
+  background-color: #9C1C1C;
+  color: #FFFFFF;
+  border: 1px solid #FF7D66;
+}
+
+[data-theme="dark"] .btn-maroon:hover {
+  background-color: #B52222;
+  color: #FFFFFF;
+  border-color: #FFA694;
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: var(--gold-primary);
+  color: #1E100E;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .btn-secondary {
+  color: var(--gold-primary);
+  border: 1.5px solid var(--gold-primary);
+  background-color: rgba(240, 199, 85, 0.05);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background-color: rgba(240, 199, 85, 0.18);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .data-table-wrapper {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(240, 199, 85, 0.2);
+}
+
+[data-theme="dark"] .data-table th {
+  background-color: rgba(240, 199, 85, 0.08);
+  color: var(--gold-primary);
+  border-bottom: 2px solid rgba(240, 199, 85, 0.2);
+}
+
+[data-theme="dark"] .data-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .data-table tr:hover {
+  background-color: rgba(240, 199, 85, 0.06);
+}
+
+[data-theme="dark"] .sidebar-nav-item {
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .sidebar-nav-item:hover,
+[data-theme="dark"] .sidebar-nav-item.active {
+  background-color: rgba(255, 125, 102, 0.15);
+  color: var(--maroon-primary);
+}
+
+/* Badges in dark theme */
+[data-theme="dark"] .badge-pending { background-color: rgba(239, 108, 0, 0.22); color: #FFB74D; border: 1px solid rgba(239, 108, 0, 0.35); }
+[data-theme="dark"] .badge-accepted { background-color: rgba(46, 125, 50, 0.22); color: #81C784; border: 1px solid rgba(46, 125, 50, 0.35); }
+[data-theme="dark"] .badge-confirmed { background-color: rgba(3, 169, 244, 0.22); color: #81D4FA; border: 1px solid rgba(3, 169, 244, 0.35); }
+[data-theme="dark"] .badge-rejected { background-color: rgba(198, 40, 40, 0.22); color: #EF9A9A; border: 1px solid rgba(198, 40, 40, 0.35); }
+[data-theme="dark"] .badge-cancelled { background-color: rgba(255, 255, 255, 0.1); color: #CFD8DC; border: 1px solid rgba(255, 255, 255, 0.15); }
+[data-theme="dark"] .badge-completed { background-color: rgba(156, 39, 176, 0.22); color: #CE93D8; border: 1px solid rgba(156, 39, 176, 0.35); }
+[data-theme="dark"] .badge-verified { background-color: rgba(46, 125, 50, 0.22); color: #81C784; border: 1px solid rgba(46, 125, 50, 0.35); }
+[data-theme="dark"] .badge-unverified { background-color: rgba(198, 40, 40, 0.22); color: #EF9A9A; border: 1px solid rgba(198, 40, 40, 0.35); }
+
+/* Calendar in dark theme */
+[data-theme="dark"] .calendar-widget {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(240, 199, 85, 0.2);
+}
+
+[data-theme="dark"] .calendar-day-header {
+  color: var(--gold-light);
+}
+
+[data-theme="dark"] .cell-available {
+  background-color: rgba(76, 175, 80, 0.18);
+  color: #81C784;
+  border: 1px solid rgba(76, 175, 80, 0.35);
+}
+
+[data-theme="dark"] .cell-pending {
+  background-color: rgba(255, 152, 0, 0.18);
+  color: #FFB74D;
+  border: 1px solid rgba(255, 152, 0, 0.35);
+}
+
+[data-theme="dark"] .cell-booked {
+  background-color: rgba(244, 67, 54, 0.18);
+  color: #EF9A9A;
+  border: 1px solid rgba(244, 67, 54, 0.35);
 }
 
 /* Reset and Base Styles */

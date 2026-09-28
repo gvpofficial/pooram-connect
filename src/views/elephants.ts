@@ -31,17 +31,17 @@ export function renderElephants(params: Record<string, string> = {}) {
                 Official state database of captive elephants in Kerala, synced with Kerala Forest & Wildlife Department & High Court records.
               </p>
             </div>
-            <div id="stats-badge" style="background: rgba(139, 28, 28, 0.08); border: 1px solid rgba(139, 28, 28, 0.2); padding: 8px 16px; border-radius: 8px; font-weight: 600; color: var(--maroon-primary); font-size: 0.9rem;">
+            <div id="stats-badge" style="background: rgba(212, 175, 55, 0.12); border: 1px solid rgba(212, 175, 55, 0.3); padding: 8px 16px; border-radius: 8px; font-weight: 600; color: var(--gold-primary); font-size: 0.9rem;">
               Loading registry...
             </div>
           </div>
         </div>
 
         <!-- Filter Bar -->
-        <div class="search-bar-container" style="margin-top: 0; margin-bottom: 40px; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.06);">
+        <div class="search-bar-container" style="margin-top: 0; margin-bottom: 40px; padding: 24px; border-radius: 12px;">
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
             <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Search Name / Microchip / Custodian</label>
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600;">Search Name / Microchip / Custodian</label>
               <input
                 id="search-input"
                 type="text"
@@ -52,7 +52,7 @@ export function renderElephants(params: Record<string, string> = {}) {
             </div>
 
             <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Registered District</label>
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600;">Registered District</label>
               <select id="district-input" class="form-control">
                 <option value="">All Districts (Kerala)</option>
                 ${districts.map(d => `<option value="${d}" ${initialDistrict === d ? 'selected' : ''}>${d}</option>`).join('')}
@@ -60,7 +60,7 @@ export function renderElephants(params: Record<string, string> = {}) {
             </div>
 
             <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Category / Gender</label>
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600;">Category / Gender</label>
               <select id="gender-input" class="form-control">
                 <option value="">All Categories</option>
                 <option value="Male" ${initialGender === 'Male' ? 'selected' : ''}>Tusker (Male / Komban)</option>
@@ -70,7 +70,7 @@ export function renderElephants(params: Record<string, string> = {}) {
             </div>
 
             <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Min Height (cm)</label>
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600;">Min Height (cm)</label>
               <input
                 id="height-input"
                 type="number"
@@ -81,7 +81,7 @@ export function renderElephants(params: Record<string, string> = {}) {
             </div>
 
             <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Available From</label>
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600;">Available From</label>
               <input
                 id="from-input"
                 type="date"
@@ -91,7 +91,7 @@ export function renderElephants(params: Record<string, string> = {}) {
             </div>
 
             <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Available To</label>
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600;">Available To</label>
               <input
                 id="to-input"
                 type="date"
@@ -190,7 +190,7 @@ export function renderElephants(params: Record<string, string> = {}) {
 
     if (totalMatches === 0) {
       resultsContainer.innerHTML = `
-        <div class="card" style="padding: 60px; text-align: center; color: var(--text-muted); background: white; border-radius: 12px;">
+        <div class="card" style="padding: 60px; text-align: center; color: var(--text-muted); border-radius: 12px;">
           <span style="font-size: 3.5rem; display: block; margin-bottom: 16px;">🐘</span>
           <h3 style="color: var(--maroon-primary); margin-bottom: 8px;">No elephants matched your criteria</h3>
           <p style="margin-top: 4px;">Try loosening the search filters, removing district constraints, or resetting filters.</p>
@@ -211,7 +211,7 @@ export function renderElephants(params: Record<string, string> = {}) {
           const custodianLabel = ele.presentCustodian ? ele.presentCustodian.substring(0, 45) : (ele.owner?.name || 'Devaswom');
 
           return `
-            <div class="card" style="display: flex; flex-direction: column; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; background: white; border: 1px solid rgba(0,0,0,0.06);">
+            <div class="card" style="display: flex; flex-direction: column; overflow: hidden; border-radius: 12px; box-shadow: var(--box-shadow-md); transition: transform 0.2s, box-shadow 0.2s;">
               <div class="card-img-wrapper" style="position: relative; height: 210px; overflow: hidden; background: #2c2523;">
                 <img src="${resolveUrl(ele.imageUrl)}" alt="${ele.name}" class="card-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" />
                 <div style="position: absolute; top: 12px; left: 12px; display: flex; flex-wrap: wrap; gap: 6px; z-index: 2;">
@@ -228,14 +228,14 @@ export function renderElephants(params: Record<string, string> = {}) {
               </div>
               <div class="card-content" style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
                 <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
-                  <h3 class="card-title" style="font-size: 1.25rem; font-weight: 700; color: var(--maroon-primary); margin: 0; line-height: 1.3;">${ele.name}</h3>
+                  <h3 class="card-title" style="font-size: 1.25rem; font-weight: 700; margin: 0; line-height: 1.3;">${ele.name}</h3>
                 </div>
                 
                 <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; display: flex; gap: 6px; align-items: center;">
                   <span>Reg: <strong>${ele.registrationNumber}</strong></span>
                 </div>
 
-                <div class="card-meta" style="display: flex; gap: 12px; font-size: 0.85rem; color: #555; background: #FAF7F2; padding: 8px 12px; border-radius: 6px; margin-bottom: 12px;">
+                <div class="card-meta" style="display: flex; gap: 12px; font-size: 0.85rem; color: var(--text-dark); background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px;">
                   <span><strong>${ele.height}</strong> cm</span>
                   <span>•</span>
                   <span><strong>${ele.age}</strong> Yrs</span>
@@ -243,12 +243,12 @@ export function renderElephants(params: Record<string, string> = {}) {
                   <span><strong>${ele.weight}</strong> kg</span>
                 </div>
 
-                <p class="card-description" style="font-size: 0.85rem; color: #666; line-height: 1.5; margin-bottom: 14px; flex-grow: 1;">
+                <p class="card-description" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; flex-grow: 1;">
                   ${ele.history.substring(0, 110)}...
                 </p>
 
                 ${ele.antecedents ? `
-                  <div style="margin-bottom: 12px; font-size: 0.75rem; color: #856404; background: #FFF3CD; border: 1px solid #FFEEBA; padding: 4px 8px; border-radius: 4px;">
+                  <div style="margin-bottom: 12px; font-size: 0.75rem; color: #FFA726; background: rgba(255, 152, 0, 0.15); border: 1px solid rgba(255, 152, 0, 0.35); padding: 4px 8px; border-radius: 4px;">
                     ⚠️ HC Record: ${ele.antecedents.substring(0, 50)}...
                   </div>
                 ` : ''}
@@ -271,7 +271,7 @@ export function renderElephants(params: Record<string, string> = {}) {
     // Render Load More button if more elephants available
     if (currentVisibleCount < totalMatches) {
       paginationContainer.innerHTML = `
-        <button id="load-more-btn" class="btn btn-secondary" style="padding: 12px 28px; font-size: 0.95rem; font-weight: 600; background: white; border: 2px solid var(--maroon-primary); color: var(--maroon-primary); cursor: pointer; border-radius: 8px;">
+        <button id="load-more-btn" class="btn btn-secondary" style="padding: 12px 28px; font-size: 0.95rem; font-weight: 600; cursor: pointer; border-radius: 8px;">
           Load More Elephants (${totalMatches - currentVisibleCount} remaining) &darr;
         </button>
       `;
@@ -441,7 +441,7 @@ export function renderElephantDetail(params: Record<string, string>) {
               <img src="${resolveUrl(elephant.imageUrl)}" alt="${elephant.name}" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
 
-            <h1 style="font-size: 2.4rem; margin-bottom: 8px; color: var(--maroon-primary);">${elephant.name}</h1>
+            <h1 style="font-size: 2.4rem; margin-bottom: 8px;">${elephant.name}</h1>
             
             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;">
               <span class="badge badge-verified">Verified Government Registry</span>
@@ -449,12 +449,12 @@ export function renderElephantDetail(params: Record<string, string>) {
               ${elephant.microchipNumber && elephant.microchipNumber !== 'NIL' ? `
                 <span class="badge" style="background: var(--maroon-primary); color: white;">Microchip: ${elephant.microchipNumber}</span>
               ` : ''}
-              <span class="badge" style="background: var(--gold-secondary); color: #3E1000; font-weight: 700;">📍 ${elephant.district || 'Kerala'}</span>
+              <span class="badge" style="background: rgba(212, 175, 55, 0.2); color: var(--gold-primary); font-weight: 700; border: 1px solid rgba(212, 175, 55, 0.4);">📍 ${elephant.district || 'Kerala'}</span>
             </div>
 
             <!-- Card 1: Official Forest & Wildlife Dept Registry Record -->
-            <div class="card" style="padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--maroon-primary); background: white;">
-              <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--maroon-primary); border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+            <div class="card" style="padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--maroon-primary);">
+              <h3 style="font-size: 1.15rem; margin-bottom: 16px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 8px; display: flex; align-items: center; gap: 8px;">
                 📜 Forest & Wildlife Dept Official Registry Details
               </h3>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 0.9rem;">
@@ -468,8 +468,8 @@ export function renderElephantDetail(params: Record<string, string>) {
             </div>
 
             <!-- Card 2: Physical & Mathangaleela Characteristics -->
-            <div class="card" style="padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--gold-primary); background: white;">
-              <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--maroon-primary); border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+            <div class="card" style="padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--gold-primary);">
+              <h3 style="font-size: 1.15rem; margin-bottom: 16px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 8px; display: flex; align-items: center; gap: 8px;">
                 🐘 Physical Characteristics & Mathangaleela Attributes
               </h3>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 0.9rem; margin-bottom: 12px;">
@@ -481,23 +481,23 @@ export function renderElephantDetail(params: Record<string, string>) {
                 <p style="margin: 0;"><strong>Mahout Contact:</strong> ${elephant.mahoutPhone}</p>
               </div>
               ${elephant.identificationMarks ? `
-                <div style="padding-top: 10px; border-top: 1px dashed rgba(0,0,0,0.08); font-size: 0.85rem; color: #555;">
+                <div style="padding-top: 10px; border-top: 1px dashed rgba(212, 175, 55, 0.2); font-size: 0.85rem; color: var(--text-muted);">
                   <strong>Physical Identification Marks:</strong> ${elephant.identificationMarks}
                 </div>
               ` : ''}
             </div>
 
             <!-- Card 3: Behavioral Compliance & Antecedents (High Court Record) -->
-            <div class="card" style="padding: 24px; margin-bottom: 24px; background: white;">
+            <div class="card" style="padding: 24px; margin-bottom: 24px;">
               <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--maroon-primary); display: flex; align-items: center; gap: 8px;">
                 ⚖️ High Court & Veterinary Antecedents Record
               </h3>
               ${elephant.antecedents ? `
-                <div style="padding: 12px 16px; background: #FFF3CD; border-left: 4px solid #856404; border-radius: 4px; font-size: 0.85rem; color: #856404; margin-bottom: 12px;">
+                <div style="padding: 12px 16px; background: rgba(255, 152, 0, 0.15); border-left: 4px solid #FFA726; border-radius: 4px; font-size: 0.85rem; color: #FFA726; margin-bottom: 12px;">
                   <strong>High Court Antecedent Filing:</strong> ${elephant.antecedents}
                 </div>
               ` : `
-                <div style="padding: 12px 16px; background: #E8F5E9; border-left: 4px solid #2E7D32; border-radius: 4px; font-size: 0.85rem; color: #2E7D32; margin-bottom: 12px;">
+                <div style="padding: 12px 16px; background: rgba(76, 175, 80, 0.15); border-left: 4px solid #81C784; border-radius: 4px; font-size: 0.85rem; color: #81C784; margin-bottom: 12px;">
                   ✅ <strong>Clear Safety Track Record:</strong> No adverse fatal incident antecedents recorded in Kerala High Court captive elephant submissions.
                 </div>
               `}
@@ -507,7 +507,7 @@ export function renderElephantDetail(params: Record<string, string>) {
             </div>
 
             <!-- Card 4: Biography & History -->
-            <div class="card" style="padding: 24px; background: white;">
+            <div class="card" style="padding: 24px;">
               <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--maroon-primary);">
                 📖 Heritage Profile & History
               </h3>
@@ -523,7 +523,7 @@ export function renderElephantDetail(params: Record<string, string>) {
             <div id="calendar-container"></div>
 
             <!-- Booking Form Card -->
-            <div class="card" style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+            <div class="card" style="padding: 32px; border-radius: 12px;">
               <h3 style="font-size: 1.4rem; color: var(--maroon-primary); margin-bottom: 8px;">Book for your Festival</h3>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
                 Verified festival committees can request ceremonial booking dates for ${elephant.name}.

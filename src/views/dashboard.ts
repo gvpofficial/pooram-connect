@@ -352,7 +352,7 @@ function renderCommitteeDashboard(session: any): string {
         <div id="comm-success" style="color: var(--color-available); margin-bottom: 20px; font-weight: 700; display: none;"></div>
 
         ${!session.isVerified ? `
-          <div style="padding: 16px; background-color: #FFF3E0; border-radius: 8px; border-left: 4px solid #E65100; color: #E65100; font-size: 0.9rem; margin-bottom: 32px;">
+          <div style="padding: 16px; background-color: rgba(239, 108, 0, 0.15); border-radius: 8px; border-left: 4px solid #FFA726; color: #FFA726; font-size: 0.9rem; margin-bottom: 32px;">
             <strong>Administrative Notice:</strong> Your account is currently unverified. You can set up your temple and festival draft events, but booking requests will be blocked until an administrator approves your registration.
           </div>
         ` : ''}

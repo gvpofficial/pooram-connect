@@ -57,6 +57,17 @@ export interface Elephant {
   isVerified: boolean;
   createdAt: string;
   owner?: User;
+
+  // Official Kerala Forest & Wildlife Dept Registry Details
+  microchipNumber?: string;
+  microchipCertNo?: string;
+  gender?: 'Male' | 'Female' | 'Makhana';
+  district?: string;
+  ownershipCertNo?: string;
+  presentCustodian?: string;
+  originalOwner?: string;
+  antecedents?: string;
+  identificationMarks?: string;
 }
 
 export interface Accessory {
@@ -116,7 +127,7 @@ export interface DatabaseSchema {
 
 const LOCAL_STORAGE_KEY = 'pooram_connect_db';
 const DB_VERSION_KEY = 'pooram_connect_db_version';
-const CURRENT_DB_VERSION = '5'; // Increment this to force client-side re-seeding
+const CURRENT_DB_VERSION = '6'; // Increment this to force client-side re-seeding
 
 // SHA-256 hash helper for secure password comparisons
 export function sha256(message: string): string {

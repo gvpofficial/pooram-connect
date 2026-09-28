@@ -1,5 +1,6 @@
-export const initialDbData = {
-  "users": [
+import { officialElephants, officialCustodianUsers } from './data/elephants';
+
+const baseUsers = [
     {
       "id": "u-admin",
       "name": "Kerala Devaswom Commissioner",
@@ -242,7 +243,12 @@ export const initialDbData = {
       "isVerified": true,
       "createdAt": "2026-07-02T10:16:42.024Z"
     }
-  ],
+  ];
+
+const allUsers = [...baseUsers, ...officialCustodianUsers.filter(cu => !baseUsers.some(bu => bu.id === cu.id))];
+
+export const initialDbData = {
+  users: allUsers,
   "temples": [
     {
       "id": "t-vadakkunnathan",
@@ -530,188 +536,7 @@ export const initialDbData = {
       "createdAt": "2026-07-15T14:48:00.000Z"
     }
   ],
-  "elephants": [
-    {
-      "id": "e-ramachandran",
-      "ownerId": "u-owner-ramachandran",
-      "name": "Thechikottukavu Ramachandran",
-      "imageUrl": "/assets/elephants/ramachandran.jpg",
-      "history": "The tallest captive elephant in India and second tallest in Asia. Highly revered across Kerala, he is famous for opening the Southern Gopuram Gate of the Vadakkunnathan Temple to officially kickstart the Thrissur Pooram.",
-      "age": 63,
-      "height": 317,
-      "weight": 5800,
-      "registrationNumber": "KERALA-DEV-E101",
-      "mahoutName": "Mani Nair",
-      "mahoutPhone": "9446012345",
-      "fitnessCertificateUrl": "/docs/certificates/ramachandran_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "Good physical fitness for ceremonial duties, subject to specific regulatory guidelines and rest periods.",
-      "isVerified": true,
-      "createdAt": "2026-07-02T10:16:42.025Z"
-    },
-    {
-      "id": "e-karnan",
-      "ownerId": "u-owner-karnan",
-      "name": "Mangalamkunnu Karnan (Legacy)",
-      "imageUrl": "/assets/elephants/karnan.jpg",
-      "history": "Historically celebrated for his tall posture and exceptional beauty. Known for his legendary Thala Pokkam, Karnan was a beloved king of processions who passed away in 2021, leaving a lasting legacy in Kerala's festival history.",
-      "age": 53,
-      "height": 308,
-      "weight": 5100,
-      "registrationNumber": "KERALA-DEV-E102",
-      "mahoutName": "Sasi G.",
-      "mahoutPhone": "9446054321",
-      "fitnessCertificateUrl": "/docs/certificates/karnan_fit.pdf",
-      "fitnessValidity": "2021-01-15",
-      "medicalRecords": "Passed away in January 2021. Maintained here as a legendary heritage entry.",
-      "isVerified": true,
-      "createdAt": "2026-07-02T10:16:42.025Z"
-    },
-    {
-      "id": "e-rajan",
-      "ownerId": "u-owner-rajan",
-      "name": "Pampady Rajan",
-      "imageUrl": "/assets/elephants/rajan.jpg",
-      "history": "One of Kerala's most beloved elephants, famous for his unmatched high head posture ('Thala Pokkam') and extremely calm demeanor. He has been crowned with numerous prestigious awards including 'Gajamaanikyam' and 'Gajarajan'.",
-      "age": 50,
-      "height": 308,
-      "weight": 5200,
-      "registrationNumber": "KERALA-DEV-E103",
-      "mahoutName": "Radhakrishnan K.",
-      "mahoutPhone": "9447012345",
-      "fitnessCertificateUrl": "/docs/certificates/rajan_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "Fit and highly active, regularly checked by veterinary doctors.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:32:00.000Z"
-    },
-    {
-      "id": "e-kalidasan",
-      "ownerId": "u-owner-kalidasan",
-      "name": "Chirakkal Kalidasan",
-      "imageUrl": "/assets/elephants/kalidasan.jpg",
-      "history": "Known as 'Junior Thechikodu' for his massive build and height. He gained global recognition for starring in the movie 'Baahubali 2: The Conclusion' and is a crowd-puller at major festivals.",
-      "age": 47,
-      "height": 312,
-      "weight": 5400,
-      "registrationNumber": "KERALA-DEV-E104",
-      "mahoutName": "Vinu Gopalan",
-      "mahoutPhone": "9446056789",
-      "fitnessCertificateUrl": "/docs/certificates/kalidasan_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "Excellent physical condition, full fitness clearance for transportation and festivals.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:32:00.000Z"
-    },
-    {
-      "id": "e-sivakumar",
-      "ownerId": "u-owner-sivakumar",
-      "name": "Ernakulam Sivakumar",
-      "imageUrl": "/assets/elephants/sivakumar.jpg",
-      "history": "The chief elephant of the Cochin Devaswom Board, representing the Ernakulam Shiva Temple. He is a gentle giant with a peaceful nature, often carrying the sacred deity of Cochin during Thrissur Pooram.",
-      "age": 46,
-      "height": 302,
-      "weight": 4900,
-      "registrationNumber": "KERALA-DEV-E105",
-      "mahoutName": "Mohanan P.",
-      "mahoutPhone": "9446098765",
-      "fitnessCertificateUrl": "/docs/certificates/sivakumar_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "Fully fit and regularly monitored by Cochin Devaswom veterinary board.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:32:00.000Z"
-    },
-    {
-      "id": "e-sivaraju",
-      "ownerId": "u-owner-sivaraju",
-      "name": "Thrikkadavoor Sivaraju",
-      "imageUrl": "/assets/elephants/sivaraju.jpg",
-      "history": "Carrying the title of 'Gajaraja Ratnam', Sivaraju is one of the tallest living elephants in Asia and is renowned for his perfect body structure as defined in the ancient Mathangaleela. He commands record hire fees in Kerala.",
-      "age": 54,
-      "height": 311,
-      "weight": 5600,
-      "registrationNumber": "KERALA-DEV-E106",
-      "mahoutName": "Hari Prasad",
-      "mahoutPhone": "9447012999",
-      "fitnessCertificateUrl": "/docs/certificates/sivaraju_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "Strong build, in absolute prime health, fit for major celebrations.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:32:00.000Z"
-    },
-    {
-      "id": "e-indrasen",
-      "ownerId": "u-owner-guruvayur",
-      "name": "Guruvayur Indrasen",
-      "imageUrl": "/assets/elephants/indrasen.jpg",
-      "history": "Brought to Kerala from the Sonepur Mela in Bihar and donated to Guruvayur Temple in 1979. He is a senior, highly respected elephant at Punnathur Kotta (Guruvayur Devaswom), beloved for his calm temperament and beautiful tusks.",
-      "age": 55,
-      "height": 295,
-      "weight": 4600,
-      "registrationNumber": "KERALA-DEV-E107",
-      "mahoutName": "Suresh Kumar",
-      "mahoutPhone": "9446012444",
-      "fitnessCertificateUrl": "/docs/certificates/indrasen_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "Very healthy, kept under daily Devaswom veterinary supervision.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:48:00.000Z"
-    },
-    {
-      "id": "e-kesavan",
-      "ownerId": "u-owner-puthuppally",
-      "name": "Puthuppally Kesavan",
-      "imageUrl": "/assets/elephants/kesavan.jpg",
-      "history": "A massive elephant standing at 309 cm with an immense fan following across central Kerala. He is noted for his physical symmetry, broad ears, and his highly elegant gait during temple processions.",
-      "age": 51,
-      "height": 309,
-      "weight": 5300,
-      "registrationNumber": "KERALA-DEV-E108",
-      "mahoutName": "Prasad G.",
-      "mahoutPhone": "9447012555",
-      "fitnessCertificateUrl": "/docs/certificates/kesavan_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "Fit and regular participant of Kottayam and Pathanamthitta temple festivals.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:48:00.000Z"
-    },
-    {
-      "id": "e-ananthapadmanabhan",
-      "ownerId": "u-owner-cherpulassery",
-      "name": "Cherpulassery Ananthapadmanabhan",
-      "imageUrl": "/assets/elephants/ananthapadmanabhan.jpg",
-      "history": "A majestic elephant of Palakkad region, highly sought after for leading vela processions. He stands out with his beautiful straight posture, healthy tusks, and a tail that touches the ground.",
-      "age": 45,
-      "height": 306,
-      "weight": 5000,
-      "registrationNumber": "KERALA-DEV-E109",
-      "mahoutName": "Vijayan C.",
-      "mahoutPhone": "9446056333",
-      "fitnessCertificateUrl": "/docs/certificates/ananthapadmanabhan_fit.pdf",
-      "fitnessValidity": "2028-03-31",
-      "medicalRecords": "In prime health, active on the Palakkad and Malappuram festival circuits.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:48:00.000Z"
-    },
-    {
-      "id": "e-g-kesavan",
-      "ownerId": "u-owner-guruvayur",
-      "name": "Guruvayur Kesavan (Legendary Heritage)",
-      "imageUrl": "/assets/elephants/ramachandran.jpg",
-      "history": "The most legendary elephant in the history of Kerala. Donated to the Guruvayur Temple in 1922, Kesavan was famous for his extreme devotion to the deity, his grand stance, and passing away on Guruvayur Ekadasi day in 1976. A true king of elephants.",
-      "age": 72,
-      "height": 310,
-      "weight": 5500,
-      "registrationNumber": "KERALA-DEV-LEGACY1",
-      "mahoutName": "Achuthan Nair",
-      "mahoutPhone": "0000000000",
-      "fitnessCertificateUrl": "/docs/certificates/g_kesavan_fit.pdf",
-      "fitnessValidity": "1976-12-02",
-      "medicalRecords": "Deceased. Kept as the ultimate heritage reference profile in Kerala's history.",
-      "isVerified": true,
-      "createdAt": "2026-07-15T14:48:00.000Z"
-    }
-  ],
+  "elephants": officialElephants,
   "accessories": [
     {
       "id": "a-nettipattam-gold",

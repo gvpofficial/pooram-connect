@@ -34,20 +34,28 @@ export function renderHome() {
 
   const elephantsHtml = elephants.map(e => `
     <div class="card">
-      <div class="card-img-wrapper">
+      <div class="card-img-wrapper" style="position: relative;">
         <img src="${resolveUrl(e.imageUrl)}" alt="${e.name}" class="card-img" />
+        <div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 6px;">
+          <span style="background: rgba(139, 28, 28, 0.9); color: white; padding: 3px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;">
+            ${e.microchipNumber && e.microchipNumber !== 'NIL' ? `MC: ${e.microchipNumber}` : `Cert #${e.microchipCertNo || 'KFD'}`}
+          </span>
+          <span style="background: rgba(197, 149, 40, 0.95); color: #3E1000; padding: 3px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;">
+            📍 ${e.district || 'Kerala'}
+          </span>
+        </div>
       </div>
       <div class="card-content">
         <h3 style="font-size: 1.2rem; margin-bottom: 8px;">${e.name}</h3>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
-          🐘 Age: ${e.age} yrs | Height: ${e.height} cm
+          🐘 ${e.gender === 'Female' ? 'Female' : (e.gender === 'Makhana' ? 'Makhana' : 'Tusker')} • Age: ${e.age} yrs • Height: ${e.height} cm
         </p>
         <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px; min-height: 60px;">
           ${e.history.substring(0, 100)}...
         </p>
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 12px;">
-          <span style="font-size: 0.8rem; color: var(--text-muted);">
-            Reg: ${e.registrationNumber}
+          <span style="font-size: 0.8rem; color: var(--text-muted); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            ${e.presentCustodian || e.registrationNumber}
           </span>
           <a href="/elephants/${e.id}" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;">
             View details

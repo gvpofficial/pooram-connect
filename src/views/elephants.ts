@@ -2,42 +2,75 @@ import { dbService, resolveUrl } from '../db';
 import { getSession } from '../auth';
 import { renderLayout, setupLayoutEvents } from '../components/layout';
 import { renderCalendarWidget } from '../components/calendar';
-import { navigate } from '../router';
 
 export function renderElephants(params: Record<string, string> = {}) {
   const appDiv = document.getElementById('app')!;
   
   const initialSearch = params.search || '';
+  const initialDistrict = params.district || '';
+  const initialGender = params.gender || '';
   const initialMinHeight = params.minHeight || '';
   const initialFrom = params.availableFrom || '';
   const initialTo = params.availableTo || '';
   
+  const districts = [
+    'Thrissur', 'Palakkad', 'Kollam', 'Kottayam', 'Ernakulam',
+    'Alappuzha', 'Thiruvananthapuram', 'Malappuram', 'Pathanamthitta',
+    'Kozhikode', 'Kannur', 'Wayanad', 'Idukki', 'Kasaragod',
+    'Forest Reserve (Statewide)'
+  ];
+
   const html = `
     <div style="padding: 40px 0; background-color: var(--ivory-bg); min-height: 80vh;">
       <div class="container">
         <div style="margin-bottom: 32px;">
-          <h1 style="font-size: 2.5rem; margin-bottom: 8px;">Majestic Pooram Elephants</h1>
-          <p style="color: var(--text-muted);">
-            Browse profiles, registrations, and booking availability calendars for Kerala's temple elephants.
-          </p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+            <div>
+              <h1 style="font-size: 2.5rem; margin-bottom: 8px;">Majestic Pooram Elephants</h1>
+              <p style="color: var(--text-muted); font-size: 1.05rem;">
+                Official state database of captive elephants in Kerala, synced with Kerala Forest & Wildlife Department & High Court records.
+              </p>
+            </div>
+            <div id="stats-badge" style="background: rgba(139, 28, 28, 0.08); border: 1px solid rgba(139, 28, 28, 0.2); padding: 8px 16px; border-radius: 8px; font-weight: 600; color: var(--maroon-primary); font-size: 0.9rem;">
+              Loading registry...
+            </div>
+          </div>
         </div>
 
         <!-- Filter Bar -->
-        <div class="search-bar-container" style="margin-top: 0; margin-bottom: 40px;">
-          <div class="search-grid">
-            <div class="form-group">
-              <label class="form-label">Search Name or Register No</label>
+        <div class="search-bar-container" style="margin-top: 0; margin-bottom: 40px; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.06);">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Search Name / Microchip / Custodian</label>
               <input
                 id="search-input"
                 type="text"
-                placeholder="e.g. Ramachandran, Karnan..."
+                placeholder="e.g. Ramachandran, 00065DC96D, Devaswom..."
                 class="form-control"
                 value="${initialSearch}"
               />
             </div>
 
-            <div class="form-group">
-              <label class="form-label">Min Height (cm)</label>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Registered District</label>
+              <select id="district-input" class="form-control">
+                <option value="">All Districts (Kerala)</option>
+                ${districts.map(d => `<option value="${d}" ${initialDistrict === d ? 'selected' : ''}>${d}</option>`).join('')}
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Category / Gender</label>
+              <select id="gender-input" class="form-control">
+                <option value="">All Categories</option>
+                <option value="Male" ${initialGender === 'Male' ? 'selected' : ''}>Tusker (Male / Komban)</option>
+                <option value="Female" ${initialGender === 'Female' ? 'selected' : ''}>Cow Elephant (Female / Pidiyan)</option>
+                <option value="Makhana" ${initialGender === 'Makhana' ? 'selected' : ''}>Makhana (Tuskless Male)</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Min Height (cm)</label>
               <input
                 id="height-input"
                 type="number"
@@ -47,8 +80,8 @@ export function renderElephants(params: Record<string, string> = {}) {
               />
             </div>
 
-            <div class="form-group">
-              <label class="form-label">Available From</label>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Available From</label>
               <input
                 id="from-input"
                 type="date"
@@ -57,8 +90,8 @@ export function renderElephants(params: Record<string, string> = {}) {
               />
             </div>
 
-            <div class="form-group">
-              <label class="form-label">Available To</label>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; color: var(--maroon-primary);">Available To</label>
               <input
                 id="to-input"
                 type="date"
@@ -67,14 +100,16 @@ export function renderElephants(params: Record<string, string> = {}) {
               />
             </div>
           </div>
-          <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
-            <button id="reset-btn" class="btn btn-secondary" style="font-size: 0.85rem; cursor: pointer;">
+
+          <div style="display: flex; justify-content: flex-end; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+            <button id="reset-btn" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 18px; cursor: pointer;">
               Reset Filters
             </button>
           </div>
         </div>
 
         <div id="results-container"></div>
+        <div id="pagination-container" style="text-align: center; margin-top: 40px;"></div>
       </div>
     </div>
   `;
@@ -83,14 +118,23 @@ export function renderElephants(params: Record<string, string> = {}) {
   setupLayoutEvents();
 
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const districtInput = document.getElementById('district-input') as HTMLSelectElement;
+  const genderInput = document.getElementById('gender-input') as HTMLSelectElement;
   const heightInput = document.getElementById('height-input') as HTMLInputElement;
   const fromInput = document.getElementById('from-input') as HTMLInputElement;
   const toInput = document.getElementById('to-input') as HTMLInputElement;
   const resetBtn = document.getElementById('reset-btn')!;
   const resultsContainer = document.getElementById('results-container')!;
+  const statsBadge = document.getElementById('stats-badge')!;
+  const paginationContainer = document.getElementById('pagination-container')!;
+
+  const PAGE_SIZE = 24;
+  let currentVisibleCount = PAGE_SIZE;
 
   function filterAndRender() {
     const search = searchInput.value.toLowerCase().trim();
+    const selectedDist = districtInput.value;
+    const selectedGender = genderInput.value;
     const minHeight = heightInput.value ? parseInt(heightInput.value, 10) : 0;
     const fromVal = fromInput.value;
     const toVal = toInput.value;
@@ -100,8 +144,20 @@ export function renderElephants(params: Record<string, string> = {}) {
     if (search) {
       list = list.filter(e => 
         e.name.toLowerCase().includes(search) || 
-        e.registrationNumber.toLowerCase().includes(search)
+        e.registrationNumber.toLowerCase().includes(search) ||
+        (e.microchipNumber && e.microchipNumber.toLowerCase().includes(search)) ||
+        (e.microchipCertNo && e.microchipCertNo.toLowerCase().includes(search)) ||
+        (e.presentCustodian && e.presentCustodian.toLowerCase().includes(search)) ||
+        (e.district && e.district.toLowerCase().includes(search))
       );
+    }
+
+    if (selectedDist) {
+      list = list.filter(e => e.district && e.district.toLowerCase() === selectedDist.toLowerCase());
+    }
+
+    if (selectedGender) {
+      list = list.filter(e => e.gender && e.gender.toLowerCase() === selectedGender.toLowerCase());
     }
 
     if (minHeight) {
@@ -109,10 +165,8 @@ export function renderElephants(params: Record<string, string> = {}) {
     }
 
     if (fromVal || toVal) {
-      // Find all elephant bookings
       const bookings = dbService.getElephantBookings();
       list = list.filter(e => {
-        // Find if this elephant is booked in the date range
         const hasOverlap = bookings.some(b => {
           if (b.elephantId !== e.id || b.status !== 'confirmed') return false;
           const bStart = b.startDate;
@@ -131,62 +185,140 @@ export function renderElephants(params: Record<string, string> = {}) {
       });
     }
 
-    if (list.length === 0) {
+    const totalMatches = list.length;
+    statsBadge.textContent = `Showing ${Math.min(currentVisibleCount, totalMatches)} of ${totalMatches} verified elephants`;
+
+    if (totalMatches === 0) {
       resultsContainer.innerHTML = `
-        <div class="card" style="padding: 60px; text-align: center; color: var(--text-muted);">
-          <span style="font-size: 3rem; display: block; margin-bottom: 16px;">🐘</span>
-          <h3>No verified elephants match your parameters.</h3>
-          <p style="margin-top: 8px;">They might have active bookings on the selected dates, or try loosening the filters.</p>
+        <div class="card" style="padding: 60px; text-align: center; color: var(--text-muted); background: white; border-radius: 12px;">
+          <span style="font-size: 3.5rem; display: block; margin-bottom: 16px;">🐘</span>
+          <h3 style="color: var(--maroon-primary); margin-bottom: 8px;">No elephants matched your criteria</h3>
+          <p style="margin-top: 4px;">Try loosening the search filters, removing district constraints, or resetting filters.</p>
         </div>
       `;
+      paginationContainer.innerHTML = '';
       return;
     }
 
+    const visibleItems = list.slice(0, currentVisibleCount);
+
     resultsContainer.innerHTML = `
-      <div class="card-grid">
-        ${list.map(ele => `
-          <div class="card">
-            <div class="card-img-wrapper">
-              <img src="${resolveUrl(ele.imageUrl)}" alt="${ele.name}" class="card-img" />
+      <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px;">
+        ${visibleItems.map(ele => {
+          const genderLabel = ele.gender === 'Female' ? 'Female' : (ele.gender === 'Makhana' ? 'Makhana' : 'Tusker');
+          const chipLabel = ele.microchipNumber && ele.microchipNumber !== 'NIL' ? `MC: ${ele.microchipNumber}` : `Cert #${ele.microchipCertNo || 'KFD'}`;
+          const districtLabel = ele.district || 'Kerala';
+          const custodianLabel = ele.presentCustodian ? ele.presentCustodian.substring(0, 45) : (ele.owner?.name || 'Devaswom');
+
+          return `
+            <div class="card" style="display: flex; flex-direction: column; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; background: white; border: 1px solid rgba(0,0,0,0.06);">
+              <div class="card-img-wrapper" style="position: relative; height: 210px; overflow: hidden; background: #2c2523;">
+                <img src="${resolveUrl(ele.imageUrl)}" alt="${ele.name}" class="card-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" />
+                <div style="position: absolute; top: 12px; left: 12px; display: flex; flex-wrap: wrap; gap: 6px; z-index: 2;">
+                  <span style="background: rgba(139, 28, 28, 0.9); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px;">
+                    ${chipLabel}
+                  </span>
+                  <span style="background: rgba(197, 149, 40, 0.95); color: #3E1000; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">
+                    📍 ${districtLabel}
+                  </span>
+                </div>
+                <div style="position: absolute; bottom: 8px; right: 12px; background: rgba(0,0,0,0.65); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 500;">
+                  ${genderLabel}
+                </div>
+              </div>
+              <div class="card-content" style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                  <h3 class="card-title" style="font-size: 1.25rem; font-weight: 700; color: var(--maroon-primary); margin: 0; line-height: 1.3;">${ele.name}</h3>
+                </div>
+                
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; display: flex; gap: 6px; align-items: center;">
+                  <span>Reg: <strong>${ele.registrationNumber}</strong></span>
+                </div>
+
+                <div class="card-meta" style="display: flex; gap: 12px; font-size: 0.85rem; color: #555; background: #FAF7F2; padding: 8px 12px; border-radius: 6px; margin-bottom: 12px;">
+                  <span><strong>${ele.height}</strong> cm</span>
+                  <span>•</span>
+                  <span><strong>${ele.age}</strong> Yrs</span>
+                  <span>•</span>
+                  <span><strong>${ele.weight}</strong> kg</span>
+                </div>
+
+                <p class="card-description" style="font-size: 0.85rem; color: #666; line-height: 1.5; margin-bottom: 14px; flex-grow: 1;">
+                  ${ele.history.substring(0, 110)}...
+                </p>
+
+                ${ele.antecedents ? `
+                  <div style="margin-bottom: 12px; font-size: 0.75rem; color: #856404; background: #FFF3CD; border: 1px solid #FFEEBA; padding: 4px 8px; border-radius: 4px;">
+                    ⚠️ HC Record: ${ele.antecedents.substring(0, 50)}...
+                  </div>
+                ` : ''}
+                
+                <div style="margin-top: auto; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                  <span style="font-size: 0.75rem; color: var(--text-muted); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${ele.presentCustodian || ''}">
+                    ${custodianLabel}
+                  </span>
+                  <a href="/elephants/${ele.id}" class="btn btn-primary" style="padding: 7px 14px; font-size: 0.8rem; font-weight: 600; white-space: nowrap;">
+                    View Profile &rarr;
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="card-content">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span class="badge badge-verified">Verified</span>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">Reg: ${ele.registrationNumber}</span>
-              </div>
-              <h3 class="card-title">${ele.name}</h3>
-              <div class="card-meta">
-                <span>Height: ${ele.height} cm</span>
-                <span>Age: ${ele.age} Yrs</span>
-                <span>Weight: ${ele.weight} kg</span>
-              </div>
-              <p class="card-description">${ele.history.substring(0, 150)}...</p>
-              
-              <div style="margin-top: auto; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 0.8rem; color: var(--text-muted);">
-                  Owner: ${ele.owner?.name || 'Devaswom'}
-                </span>
-                <a href="/elephants/${ele.id}" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">
-                  View Availability &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `;
+
+    // Render Load More button if more elephants available
+    if (currentVisibleCount < totalMatches) {
+      paginationContainer.innerHTML = `
+        <button id="load-more-btn" class="btn btn-secondary" style="padding: 12px 28px; font-size: 0.95rem; font-weight: 600; background: white; border: 2px solid var(--maroon-primary); color: var(--maroon-primary); cursor: pointer; border-radius: 8px;">
+          Load More Elephants (${totalMatches - currentVisibleCount} remaining) &darr;
+        </button>
+      `;
+      document.getElementById('load-more-btn')?.addEventListener('click', () => {
+        currentVisibleCount += PAGE_SIZE;
+        filterAndRender();
+      });
+    } else {
+      paginationContainer.innerHTML = `
+        <p style="color: var(--text-muted); font-size: 0.9rem;">All ${totalMatches} verified elephants loaded.</p>
+      `;
+    }
   }
 
-  searchInput.addEventListener('input', filterAndRender);
-  heightInput.addEventListener('input', filterAndRender);
-  fromInput.addEventListener('change', filterAndRender);
-  toInput.addEventListener('change', filterAndRender);
+  searchInput.addEventListener('input', () => {
+    currentVisibleCount = PAGE_SIZE;
+    filterAndRender();
+  });
+  districtInput.addEventListener('change', () => {
+    currentVisibleCount = PAGE_SIZE;
+    filterAndRender();
+  });
+  genderInput.addEventListener('change', () => {
+    currentVisibleCount = PAGE_SIZE;
+    filterAndRender();
+  });
+  heightInput.addEventListener('input', () => {
+    currentVisibleCount = PAGE_SIZE;
+    filterAndRender();
+  });
+  fromInput.addEventListener('change', () => {
+    currentVisibleCount = PAGE_SIZE;
+    filterAndRender();
+  });
+  toInput.addEventListener('change', () => {
+    currentVisibleCount = PAGE_SIZE;
+    filterAndRender();
+  });
 
   resetBtn.addEventListener('click', () => {
     searchInput.value = '';
+    districtInput.value = '';
+    genderInput.value = '';
     heightInput.value = '';
     fromInput.value = '';
     toInput.value = '';
+    currentVisibleCount = PAGE_SIZE;
     filterAndRender();
   });
 
@@ -256,7 +388,7 @@ export function renderElephantDetail(params: Record<string, string>) {
                 ></textarea>
               </div>
 
-              <button type="submit" class="btn btn-maroon" style="margin-top: 8px; cursor: pointer;">
+              <button type="submit" class="btn btn-maroon" style="margin-top: 8px; cursor: pointer; width: 100%;">
                 Submit Booking Request
               </button>
             </form>
@@ -292,51 +424,96 @@ export function renderElephantDetail(params: Record<string, string>) {
       </div>
     `;
 
+  const genderDisplay = elephant.gender === 'Female' ? 'Cow Elephant (Pidiyan)' : (elephant.gender === 'Makhana' ? 'Tuskless Male (Makhana)' : 'Tusker (Komban)');
+
   const html = `
     <div style="padding: 60px 0; background-color: var(--ivory-bg);">
       <div class="container">
         <!-- Breadcrumb -->
-        <a href="/elephants" style="color: var(--maroon-primary); font-weight: 600; display: inline-block; margin-bottom: 24px;">
-          &larr; Back to Elephants List
+        <a href="/elephants" style="color: var(--maroon-primary); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px; text-decoration: none;">
+          &larr; Back to Elephant Registry
         </a>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: start;">
           <!-- Left Column: Elephant Details -->
           <div>
-            <div style="border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--box-shadow-lg); border: var(--border-glow); margin-bottom: 32px; height: 400px;">
+            <div style="border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--box-shadow-lg); border: var(--border-glow); margin-bottom: 28px; height: 380px; background: #2c2523;">
               <img src="${resolveUrl(elephant.imageUrl)}" alt="${elephant.name}" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
 
-            <h1 style="font-size: 2.5rem; margin-bottom: 8px; color: var(--maroon-primary);">${elephant.name}</h1>
+            <h1 style="font-size: 2.4rem; margin-bottom: 8px; color: var(--maroon-primary);">${elephant.name}</h1>
             
-            <div style="display: flex; gap: 8px; margin-bottom: 24px;">
-              <span class="badge badge-verified">Verified Profile</span>
-              <span class="badge badge-confirmed">Registration: ${elephant.registrationNumber}</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;">
+              <span class="badge badge-verified">Verified Government Registry</span>
+              <span class="badge badge-confirmed">Reg: ${elephant.registrationNumber}</span>
+              ${elephant.microchipNumber && elephant.microchipNumber !== 'NIL' ? `
+                <span class="badge" style="background: var(--maroon-primary); color: white;">Microchip: ${elephant.microchipNumber}</span>
+              ` : ''}
+              <span class="badge" style="background: var(--gold-secondary); color: #3E1000; font-weight: 700;">📍 ${elephant.district || 'Kerala'}</span>
             </div>
 
-            <div class="card" style="padding: 24px; margin-bottom: 32px;">
-              <h3 style="font-size: 1.2rem; margin-bottom: 16px; color: var(--maroon-primary); border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 8px;">
-                Physical & Fitness Characteristics
+            <!-- Card 1: Official Forest & Wildlife Dept Registry Record -->
+            <div class="card" style="padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--maroon-primary); background: white;">
+              <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--maroon-primary); border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                📜 Forest & Wildlife Dept Official Registry Details
               </h3>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; fontSize: 0.95rem;">
-                <p><strong>Height:</strong> ${elephant.height} cm</p>
-                <p><strong>Weight:</strong> ${elephant.weight} kg</p>
-                <p><strong>Age:</strong> ${elephant.age} Years</p>
-                <p><strong>Fitness Expiry:</strong> ${elephant.fitnessValidity}</p>
-                <p><strong>Mahout Name:</strong> ${elephant.mahoutName}</p>
-                <p><strong>Mahout Contact:</strong> ${elephant.mahoutPhone}</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 0.9rem;">
+                <p style="margin: 0;"><strong>Microchip ID:</strong> ${elephant.microchipNumber || 'NIL'}</p>
+                <p style="margin: 0;"><strong>Microchip Certificate:</strong> #${elephant.microchipCertNo || 'Official Record'}</p>
+                <p style="margin: 0;"><strong>Ownership Certificate (OC):</strong> ${elephant.ownershipCertNo || 'Devaswom / Forest Dept Registry'}</p>
+                <p style="margin: 0;"><strong>Registered District:</strong> ${elephant.district || 'Kerala'}</p>
+                <p style="margin: 0;"><strong>Elephant Category:</strong> ${genderDisplay}</p>
+                <p style="margin: 0;"><strong>Present Custodian:</strong> ${elephant.presentCustodian || elephant.owner?.name || 'Devaswom'}</p>
               </div>
             </div>
 
-            <div class="card" style="padding: 24px;">
-              <h3 style="font-size: 1.2rem; margin-bottom: 12px; color: var(--maroon-primary);">Biography & History</h3>
-              <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-dark);">${elephant.history}</p>
-              ${elephant.medicalRecords ? `
-                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.05);">
-                  <h4 style="font-size: 1rem; color: var(--maroon-primary); margin-bottom: 6px;">Medical History Note</h4>
-                  <p style="font-size: 0.9rem; color: var(--text-muted);">${elephant.medicalRecords}</p>
+            <!-- Card 2: Physical & Mathangaleela Characteristics -->
+            <div class="card" style="padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--gold-primary); background: white;">
+              <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--maroon-primary); border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                🐘 Physical Characteristics & Mathangaleela Attributes
+              </h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 0.9rem; margin-bottom: 12px;">
+                <p style="margin: 0;"><strong>Height:</strong> ${elephant.height} cm</p>
+                <p style="margin: 0;"><strong>Estimated Weight:</strong> ${elephant.weight} kg</p>
+                <p style="margin: 0;"><strong>Age:</strong> ${elephant.age} Years</p>
+                <p style="margin: 0;"><strong>Fitness Expiry:</strong> ${elephant.fitnessValidity}</p>
+                <p style="margin: 0;"><strong>Primary Mahout:</strong> ${elephant.mahoutName}</p>
+                <p style="margin: 0;"><strong>Mahout Contact:</strong> ${elephant.mahoutPhone}</p>
+              </div>
+              ${elephant.identificationMarks ? `
+                <div style="padding-top: 10px; border-top: 1px dashed rgba(0,0,0,0.08); font-size: 0.85rem; color: #555;">
+                  <strong>Physical Identification Marks:</strong> ${elephant.identificationMarks}
                 </div>
               ` : ''}
+            </div>
+
+            <!-- Card 3: Behavioral Compliance & Antecedents (High Court Record) -->
+            <div class="card" style="padding: 24px; margin-bottom: 24px; background: white;">
+              <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--maroon-primary); display: flex; align-items: center; gap: 8px;">
+                ⚖️ High Court & Veterinary Antecedents Record
+              </h3>
+              ${elephant.antecedents ? `
+                <div style="padding: 12px 16px; background: #FFF3CD; border-left: 4px solid #856404; border-radius: 4px; font-size: 0.85rem; color: #856404; margin-bottom: 12px;">
+                  <strong>High Court Antecedent Filing:</strong> ${elephant.antecedents}
+                </div>
+              ` : `
+                <div style="padding: 12px 16px; background: #E8F5E9; border-left: 4px solid #2E7D32; border-radius: 4px; font-size: 0.85rem; color: #2E7D32; margin-bottom: 12px;">
+                  ✅ <strong>Clear Safety Track Record:</strong> No adverse fatal incident antecedents recorded in Kerala High Court captive elephant submissions.
+                </div>
+              `}
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+                <strong>Medical & Protocol Status:</strong> ${elephant.medicalRecords || 'Certified fit under Kerala Captive Elephants (Management and Maintenance) Rules.'}
+              </p>
+            </div>
+
+            <!-- Card 4: Biography & History -->
+            <div class="card" style="padding: 24px; background: white;">
+              <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--maroon-primary);">
+                📖 Heritage Profile & History
+              </h3>
+              <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-dark); margin: 0;">
+                ${elephant.history}
+              </p>
             </div>
           </div>
 
@@ -346,8 +523,11 @@ export function renderElephantDetail(params: Record<string, string>) {
             <div id="calendar-container"></div>
 
             <!-- Booking Form Card -->
-            <div class="card" style="padding: 32px;">
-              <h3 style="font-size: 1.4rem; color: var(--maroon-primary); margin-bottom: 16px;">Book for your Festival</h3>
+            <div class="card" style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+              <h3 style="font-size: 1.4rem; color: var(--maroon-primary); margin-bottom: 8px;">Book for your Festival</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+                Verified festival committees can request ceremonial booking dates for ${elephant.name}.
+              </p>
               
               <div id="booking-error" style="color: var(--color-booked); background-color: #FFEBEE; padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: none;">
                 ⚠️ <span id="error-msg"></span>
@@ -421,7 +601,7 @@ export function renderElephantDetail(params: Record<string, string>) {
           notes
         });
 
-        successMsg.textContent = 'Booking request submitted successfully! The owner has been notified.';
+        successMsg.textContent = 'Booking request submitted successfully! The owner/custodian has been notified.';
         successDiv.style.display = 'block';
 
         // Clear form

@@ -43,3 +43,7 @@ next-env.d.ts
 # vite build output
 /dist
 
+# graphify
+graphify-out/
+.graphify*
+

@@ -138,18 +138,27 @@ export function initRouter() {
     }
   });
   
-  document.body.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const anchor = target.closest('a');
-    if (anchor) {
-      const href = anchor.getAttribute('href');
-      // Only intercept internal links
-      const isFile = window.location.protocol === 'file:';
-      const isInternal = href && (href.startsWith('/') || (isFile && (href.startsWith('./') || href.startsWith('assets/'))));
-      if (isInternal && !anchor.hasAttribute('download') && anchor.getAttribute('target') !== '_blank') {
-        e.preventDefault();
-        navigate(href);
+  const setupClickInterceptor = () => {
+    if (!document.body) return;
+    document.body.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      if (anchor) {
+        const href = anchor.getAttribute('href');
+        // Only intercept internal links
+        const isFile = window.location.protocol === 'file:';
+        const isInternal = href && (href.startsWith('/') || (isFile && (href.startsWith('./') || href.startsWith('assets/'))));
+        if (isInternal && !anchor.hasAttribute('download') && anchor.getAttribute('target') !== '_blank') {
+          e.preventDefault();
+          navigate(href);
+        }
       }
-    }
-  });
+    });
+  };
+
+  if (document.body) {
+    setupClickInterceptor();
+  } else {
+    document.addEventListener('DOMContentLoaded', setupClickInterceptor);
+  }
 }

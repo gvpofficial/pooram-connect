@@ -936,7 +936,7 @@ function setupDashboardEvents(session: any) {
           location,
           district,
           history,
-          imageUrl: '/images/temple_vadakkunnathan.jpg'
+          imageUrl: '/assets/temples/vadakkunnathan.jpg'
         });
 
         showSucc('comm', 'Temple registered successfully!');
@@ -965,7 +965,7 @@ function setupDashboardEvents(session: any) {
           startDate,
           endDate,
           description,
-          imageUrl: '/images/festival_thrissur.jpg',
+          imageUrl: '/assets/festivals/thrissur.jpg',
           schedule: {
             "Day 1": "Flag Hoisting & Introductory Processions",
             "Day 2": "Traditional Chenda Melam & Grand Kudamattom",
@@ -1024,7 +1024,7 @@ function setupDashboardEvents(session: any) {
           mahoutPhone,
           fitnessValidity,
           history,
-          imageUrl: '/images/elephant_ramachandran.jpg',
+          imageUrl: '/assets/elephants/ramachandran.jpg',
           fitnessCertificateUrl: '/docs/fitness.pdf'
         });
 
@@ -1094,7 +1094,7 @@ function setupDashboardEvents(session: any) {
           quantityTotal,
           description: desc,
           specifications,
-          imageUrl: '/images/accessory_nettipattam.jpg'
+          imageUrl: '/assets/accessories/nettipattam.jpg'
         });
 
         showSucc('acc-owner', 'Accessory listed successfully! Awaiting verification.');

@@ -1,5 +1,6 @@
 import { getSession, logout } from '../auth';
 import { navigate } from '../router';
+import { resolveUrl } from '../db';
 
 export function renderLayout(contentHtml: string, currentPath: string): string {
   const session = getSession();
@@ -41,7 +42,7 @@ export function renderLayout(contentHtml: string, currentPath: string): string {
     <header class="header">
       <div class="container header-container">
         <a href="/" class="logo-section" style="display: flex; align-items: center; text-decoration: none;">
-          <img src="./assets/brand/logo-dark.svg" alt="Pooram Connect Logo" style="height: 64px; width: auto; max-width: 100%; display: block;" />
+          <img src="${resolveUrl('/assets/brand/logo-dark.svg')}" alt="Pooram Connect Logo" style="height: 64px; width: auto; max-width: 100%; display: block;" />
         </a>
 
         <nav class="nav-links">
@@ -61,7 +62,7 @@ export function renderLayout(contentHtml: string, currentPath: string): string {
         <div class="footer-grid">
           <div class="footer-info">
             <div style="display: flex; align-items: center; margin-bottom: 16px;">
-              <img src="./assets/brand/logo-dark.svg" alt="Pooram Connect Logo" style="height: 46px; width: auto; max-width: 100%; display: block;" />
+              <img src="${resolveUrl('/assets/brand/logo-dark.svg')}" alt="Pooram Connect Logo" style="height: 46px; width: auto; max-width: 100%; display: block;" />
             </div>
             <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 320px;">
               The official centralized state ecosystem for temple festival planning, majestic elephant bookings, and traditional festival accessory rentals.

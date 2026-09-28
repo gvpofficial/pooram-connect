@@ -113,7 +113,7 @@ export function renderHome() {
           <div class="hero-3d-wrapper" style="perspective: 1000px; display: flex; justify-content: center; position: relative;">
             <div class="hero-3d-card" style="width: 100%; max-width: 440px; aspect-ratio: 4/3; transform-style: preserve-3d; transition: transform 0.5s ease; border-radius: var(--border-radius-lg); overflow: hidden; position: relative;">
               <!-- 3D Elephant Image -->
-              <img src="/images/festival_elephant_3d.jpg" alt="Kerala Pooram Festival Elephant" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: block;" />
+              <img src="${resolveUrl('/assets/festivals/elephant_3d.jpg')}" alt="Kerala Pooram Festival Elephant" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: block;" />
               <!-- Glass Overlay Reflection -->
               <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.3) 100%); pointer-events: none; z-index: 2;"></div>
               <!-- Floating Golden Frame Badge -->

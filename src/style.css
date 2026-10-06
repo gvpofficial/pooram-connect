@@ -333,16 +333,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Dynamic Theme Logo Utility */
 .theme-logo-light {
-  display: block;
+  display: block !important;
 }
 .theme-logo-dark {
-  display: none;
+  display: none !important;
 }
 [data-theme="dark"] .theme-logo-light {
-  display: none;
+  display: none !important;
 }
 [data-theme="dark"] .theme-logo-dark {
-  display: block;
+  display: block !important;
 }
 
 .nav-links {

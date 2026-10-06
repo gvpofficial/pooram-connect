@@ -213,7 +213,7 @@ export function renderElephants(params: Record<string, string> = {}) {
           return `
             <div class="card" style="display: flex; flex-direction: column; overflow: hidden; border-radius: 12px; box-shadow: var(--box-shadow-md); transition: transform 0.2s, box-shadow 0.2s;">
               <div class="card-img-wrapper" style="position: relative; height: 210px; overflow: hidden; background: #2c2523;">
-                <img src="${resolveUrl(ele.imageUrl)}" alt="${ele.name}" class="card-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" />
+                <img src="${resolveUrl(ele.imageUrl)}" alt="${ele.name}" class="card-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onerror="this.onerror=null; this.src='${resolveUrl('/assets/elephants/ramachandran.jpg')}';" />
                 <div style="position: absolute; top: 12px; left: 12px; display: flex; flex-wrap: wrap; gap: 6px; z-index: 2;">
                   <span style="background: rgba(139, 28, 28, 0.9); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px;">
                     ${chipLabel}
@@ -258,7 +258,7 @@ export function renderElephants(params: Record<string, string> = {}) {
                     ${custodianLabel}
                   </span>
                   <a href="/elephants/${ele.id}" class="btn btn-primary" style="padding: 7px 14px; font-size: 0.8rem; font-weight: 600; white-space: nowrap;">
-                    View Profile &rarr;
+                    View Availability &rarr;
                   </a>
                 </div>
               </div>
@@ -438,7 +438,7 @@ export function renderElephantDetail(params: Record<string, string>) {
           <!-- Left Column: Elephant Details -->
           <div>
             <div style="border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--box-shadow-lg); border: var(--border-glow); margin-bottom: 28px; height: 380px; background: #2c2523;">
-              <img src="${resolveUrl(elephant.imageUrl)}" alt="${elephant.name}" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="${resolveUrl(elephant.imageUrl)}" alt="${elephant.name}" class="card-img" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='${resolveUrl('/assets/elephants/ramachandran.jpg')}';" />
             </div>
 
             <h1 style="font-size: 2.4rem; margin-bottom: 8px;">${elephant.name}</h1>

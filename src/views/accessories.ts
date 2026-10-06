@@ -271,7 +271,7 @@ export function renderAccessoryDetail(params: Record<string, string>) {
           <!-- Left Column: Accessory Details -->
           <div>
             <div style="border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--box-shadow-lg); border: var(--border-glow); margin-bottom: 32px; height: 400px;">
-              <img src="${resolveUrl(accessory.imageUrl)}" alt="${accessory.name}" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="${resolveUrl(accessory.imageUrl)}" alt="${accessory.name}" class="card-img" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='${resolveUrl('/assets/accessories/nettipattam.jpg')}';" />
             </div>
 
             <h1 style="font-size: 2.5rem; margin-bottom: 8px; color: var(--maroon-primary);">${accessory.name}</h1>

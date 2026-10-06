@@ -79,8 +79,9 @@ export function navigate(path: string, pushState = true) {
   // --- STANDARD HTTP ROUTING (For Web Servers / dev preview) ---
   // Format the path to ensure it has the base path for pushState
   let resolvedPath = path;
+  const rawBaseUrl = (baseUrl === './' || baseUrl === '.') ? '/' : baseUrl;
   if (path.startsWith('/')) {
-    const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const cleanBaseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
     if (cleanBaseUrl && !path.startsWith(cleanBaseUrl + '/')) {
       resolvedPath = cleanBaseUrl + path;
     }
@@ -97,7 +98,7 @@ export function navigate(path: string, pushState = true) {
   const url = new URL(resolvedPath, window.location.origin);
   let pathname = url.pathname;
   
-  const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  const cleanBaseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
   if (cleanBaseUrl !== '/') {
     const baseWithoutTrailing = cleanBaseUrl.slice(0, -1);
     if (pathname === baseWithoutTrailing) {

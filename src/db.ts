@@ -58,6 +58,10 @@ export interface Elephant {
   createdAt: string;
   owner?: User;
 
+  // Lifecycle status
+  isDeceased?: boolean;
+  deathYear?: number;
+
   // Official Kerala Forest & Wildlife Dept Registry Details
   microchipNumber?: string;
   microchipCertNo?: string;
@@ -127,7 +131,7 @@ export interface DatabaseSchema {
 
 const LOCAL_STORAGE_KEY = 'pooram_connect_db';
 const DB_VERSION_KEY = 'pooram_connect_db_version';
-const CURRENT_DB_VERSION = '6'; // Increment this to force client-side re-seeding
+const CURRENT_DB_VERSION = '7'; // Increment this to force client-side re-seeding
 
 // SHA-256 hash helper for secure password comparisons
 export function sha256(message: string): string {
@@ -147,8 +151,16 @@ export function resolveUrl(path: string): string {
     return path;
   }
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+
+  // If running locally from file:// protocol, use relative path so assets alongside index.html load
+  if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+    return `./${cleanPath}`;
+  }
+
+  // Under HTTP / HTTPS (dev server, preview, production server, GitHub Pages)
   const baseUrl = (import.meta.env && import.meta.env.BASE_URL) || '/';
-  const base = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  const cleanBase = (baseUrl === './' || baseUrl === '.') ? '/' : baseUrl;
+  const base = cleanBase.endsWith('/') ? cleanBase : `${cleanBase}/`;
   return `${base}${cleanPath}`;
 }
 
@@ -393,6 +405,12 @@ export const dbService = {
   createElephantBooking: (booking: Omit<ElephantBooking, 'id' | 'createdAt' | 'status'>) => {
     const db = getDb();
 
+    // Prevent bookings for deceased elephants
+    const elephant = db.elephants.find(e => e.id === booking.elephantId);
+    if (elephant?.isDeceased) {
+      throw new Error(`Cannot book ${elephant.name}. This elephant passed away${elephant.deathYear ? ` in ${elephant.deathYear}` : ''} and is preserved exclusively as a sacred heritage and memorial entry.`);
+    }
+
     // Check overlapping confirmed bookings
     const isOverlapping = db.elephantBookings.some(b => {
       if (b.elephantId !== booking.elephantId || b.status !== 'confirmed') return false;
@@ -423,6 +441,11 @@ export const dbService = {
     if (!b) return false;
 
     if (status === 'confirmed') {
+      const elephant = db.elephants.find(e => e.id === b.elephantId);
+      if (elephant?.isDeceased) {
+        throw new Error(`Cannot confirm booking: ${elephant.name} is a deceased heritage record.`);
+      }
+
       // Check overlapping confirmed bookings before confirming
       const isOverlapping = db.elephantBookings.some(item => {
         if (item.id === id || item.elephantId !== b.elephantId || item.status !== 'confirmed') return false;
